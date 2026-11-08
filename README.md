@@ -4,9 +4,20 @@
 [![React](https://img.shields.io/badge/React-19.3.0-blue?style=flat-square&logo=react)](https://react.dev/)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-v4.0-38bdf8?style=flat-square&logo=tailwindcss)](https://tailwindcss.com/)
 [![Groq AI](https://img.shields.io/badge/AI_Engine-Groq_LPU-f55036?style=flat-square)](https://groq.com/)
+[![Live Demo](https://img.shields.io/badge/Live_Demo-Vercel-success?style=flat-square&logo=vercel)](https://bugsence.vercel.app)
+[![Scalar Docs](https://img.shields.io/badge/API_Docs-Scalar-0ea5e9?style=flat-square)](https://bugsence.vercel.app/reference)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.x-3178c6?style=flat-square&logo=typescript)](https://www.typescriptlang.org/)
 
 **BugSense AI** is a next-generation developer workbench designed to decode cryptic stack traces, isolate root causes, and generate production-ready code fixes in seconds. Powered by high-speed Groq AI inference and styled entirely with pure Tailwind CSS v4.
+
+---
+
+### 🌐 Live Links
+
+| Resource | Live Link | Description |
+| :--- | :--- | :--- |
+| 🚀 **Frontend (Live Demo)** | [https://bugsence.vercel.app](https://bugsence.vercel.app) | Live production application |
+| 📖 **Backend (API Reference)** | [https://bugsence.vercel.app/reference](https://bugsence.vercel.app/reference) | Interactive Scalar API docs & live client |
 
 ---
 
@@ -17,6 +28,7 @@
 - **🛡️ Root Cause & Severity Isolation:** Instant triage classifying errors into `low`, `medium`, `high`, or `critical` with deep architectural explanations.
 - **📋 1-Click Production Code Patches:** Synthesizes verified, copy-pasteable code fixes with defensive checks and explanatory comments.
 - **💾 Persistent Diagnostic Archive:** Save, search, filter, and review debugging history stored locally in your browser.
+- **📖 Interactive Scalar API Reference:** Full OpenAPI 3.1 interactive documentation and built-in API testing client at `/reference` (Swagger UI / Postman alternative).
 - **🎨 100% Pure Tailwind CSS v4:** Crafted with modern dark-mode developer aesthetics, glowing telemetry badges, and full responsive design for desktop, tablet, and mobile.
 
 ---
@@ -74,6 +86,21 @@ flowchart LR
    - **Root Cause & Technical Explanation:** Clear explanation of *why* the bug occurred.
    - **Corrected Code Solution:** One-click copy the verified patch.
 5. **Save to History (`/history`):** Click **"Save to History"** to keep an audit trail of resolved issues that can be filtered and reviewed anytime.
+6. **API Reference & Testing (`/reference`):** Explore the complete interactive OpenAPI 3.1 documentation and test the AI diagnosis API directly in your browser.
+
+---
+
+## 📖 API Documentation & Testing (Scalar)
+
+BugSense AI comes with built-in interactive API documentation powered by **Scalar**.
+
+- 🌐 **Live Production Docs:** [https://bugsence.vercel.app/reference](https://bugsence.vercel.app/reference)
+- 💻 **Local Development Docs:** [http://localhost:3000/reference](http://localhost:3000/reference)
+- 📄 **OpenAPI Specification:** [`public/openapi.json`](public/openapi.json)
+- ⚡ **Features:**
+  - Complete request payload and response schema definitions for `/api/analyze`
+  - In-browser **"Test Request"** client (Postman alternative)
+  - Instant copy-paste code snippets in JavaScript (Fetch/Axios), cURL, Python, Go, and more
 
 ---
 
@@ -84,6 +111,7 @@ flowchart LR
 | **Framework** | Next.js 16 (App Router + Turbopack) | Modern server-side rendering & optimized routing |
 | **UI Library** | React 19 | High-performance interactive components |
 | **Styling** | Pure Tailwind CSS v4 | Responsive utility-first design without custom raw CSS |
+| **API Docs** | Scalar (@scalar/nextjs-api-reference) | Modern OpenAPI 3.1 interactive reference & API client |
 | **Icons** | Lucide React | Clean, modern developer iconography |
 | **AI Engine** | Groq LPU Inference API | Sub-second structured JSON code analysis |
 | **Language** | TypeScript 5 | Strict end-to-end type safety |
@@ -97,6 +125,7 @@ bugsence/
 ├── app/
 │   ├── analyzer/page.tsx    # Interactive Bug Analyzer Studio
 │   ├── history/page.tsx     # Saved Diagnostic History & Search
+│   ├── reference/route.ts   # Scalar Interactive API Documentation & Client
 │   ├── api/analyze/route.ts # Groq AI Diagnostic API Route
 │   ├── layout.tsx           # Root Layout with Font & Meta config
 │   ├── page.tsx             # Main Telemetry Dashboard
@@ -109,7 +138,9 @@ bugsence/
 │   └── ui/                  # Pure Tailwind buttons, cards, badges
 ├── hooks/                   # Custom hooks (useAnalyze, useHistory)
 ├── lib/                     # Types, nav items, demo presets, utilities
-├── public/                  # Static assets & icons
+├── public/
+│   ├── openapi.json         # OpenAPI 3.1 specification for BugSense AI APIs
+│   └── ...                  # Static assets & icons
 └── README.md
 ```
 
