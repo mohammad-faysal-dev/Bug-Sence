@@ -1,0 +1,140 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "BugSense AI API",
+    "version": "1.0.0",
+    "description": "BugSense AI — Automated Code Diagnostics and Fixing Engine powered by Groq LPU."
+  },
+  "servers": [
+    {
+      "url": "/",
+      "description": "Live / Current Server"
+    },
+    {
+      "url": "http://localhost:3000",
+      "description": "Local Development Server"
+    }
+  ],
+  "paths": {
+    "/api/analyze": {
+      "post": {
+        "summary": "Analyze error stack trace and source code",
+        "description": "Sends an error message and optional code snippet to BugSense AI for diagnosis, root cause isolation, and automated production-ready patch generation.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["errorMessage", "language"],
+                "properties": {
+                  "errorMessage": {
+                    "type": "string",
+                    "description": "The runtime exception, compiler error, or stack trace to diagnose.",
+                    "example": "TypeError: Cannot read properties of undefined (reading 'map')"
+                  },
+                  "codeSnippet": {
+                    "type": "string",
+                    "description": "Optional surrounding source code context for better diagnostic accuracy.",
+                    "example": "const items = data.items;\nreturn items.map(i => i.id);"
+                  },
+                  "language": {
+                    "type": "string",
+                    "description": "Programming language of the error context.",
+                    "enum": [
+                      "javascript",
+                      "typescript",
+                      "python",
+                      "java",
+                      "cpp",
+                      "csharp",
+                      "php",
+                      "ruby",
+                      "go",
+                      "rust",
+                      "swift",
+                      "kotlin",
+                      "other"
+                    ],
+                    "example": "javascript"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Diagnostic report generated successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "errorSummary": {
+                      "type": "string",
+                      "example": "Attempted to access .map() on an undefined object."
+                    },
+                    "possibleCause": {
+                      "type": "string",
+                      "example": "The 'data' object does not contain an 'items' property before mapping."
+                    },
+                    "explanation": {
+                      "type": "string",
+                      "example": "When 'data' is loaded asynchronously, 'items' is initially undefined, leading to a runtime exception."
+                    },
+                    "suggestedSolution": {
+                      "type": "string",
+                      "example": "1. Use optional chaining data?.items ?? []\n2. Guard with an array check before calling map."
+                    },
+                    "codeExample": {
+                      "type": "string",
+                      "example": "const items = data?.items || [];\nreturn items.map((i) => i.id);"
+                    },
+                    "severity": {
+                      "type": "string",
+                      "enum": ["low", "medium", "high", "critical"],
+                      "example": "high"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Validation error or invalid request payload",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "example": "Please enter an error message or stack trace to diagnose."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server or AI inference failure",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "example": "Failed to analyze error."
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

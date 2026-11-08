@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import { LayoutDashboard, TerminalSquare, History } from "lucide-react";
+import { LayoutDashboard, TerminalSquare, History, BookOpen } from "lucide-react";
 
 export const NAV_ITEMS: { href: string; label: string; icon: ReactNode }[] = [
     {
@@ -16,5 +16,10 @@ export const NAV_ITEMS: { href: string; label: string; icon: ReactNode }[] = [
         href: "/history",
         label: "History",
         icon: <History className="h-4 w-4" />,
+    },
+    {
+        href: "/reference",
+        label: "API Reference",
+        icon: <BookOpen className="h-4 w-4" />,
     },
 ];
