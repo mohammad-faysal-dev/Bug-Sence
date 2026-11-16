@@ -100,18 +100,18 @@ ${result.codeExample ? `[Production Code Patch]\n${result.codeExample}` : ""}
     };
 
     return (
-        <div className="flex flex-col gap-6 w-full animate-in fade-in-50 duration-200">
+        <div className="flex flex-col gap-5 sm:gap-6 w-full animate-in fade-in-50 duration-200">
             {/* Top Navigation & Breadcrumb */}
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-4 rounded-2xl bg-slate-950/80 border border-slate-800/80 backdrop-blur-md shadow-xl">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4 p-3.5 sm:p-4 rounded-xl sm:rounded-2xl bg-slate-950/80 border border-slate-800/80 backdrop-blur-md shadow-xl">
                 <div className="flex items-center gap-3">
                     <button
                         type="button"
                         onClick={onBack}
                         id="back-to-history-btn"
-                        className="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-semibold text-slate-300 bg-slate-900/80 hover:bg-slate-800 hover:text-white border border-slate-700/80 transition-all duration-150 cursor-pointer shadow-sm hover:-translate-x-0.5"
+                        className="inline-flex items-center gap-2 px-3 py-1.5 sm:px-3.5 sm:py-2 rounded-xl text-xs font-semibold text-slate-300 bg-slate-900/80 hover:bg-slate-800 hover:text-white border border-slate-700/80 transition-all duration-150 cursor-pointer shadow-sm hover:-translate-x-0.5"
                     >
                         <ArrowLeft className="h-4 w-4" />
-                        Back to Archive
+                        <span>Back to Archive</span>
                     </button>
                     <div className="hidden sm:flex items-center gap-2 text-xs text-slate-500">
                         <span>/</span>
@@ -119,25 +119,25 @@ ${result.codeExample ? `[Production Code Patch]\n${result.codeExample}` : ""}
                     </div>
                 </div>
 
-                <div className="flex items-center gap-2.5 flex-wrap">
+                <div className="flex items-center gap-2 sm:gap-2.5 flex-wrap">
                     <Link
                         href={`/analyzer?sample=${encodeURIComponent(request.errorMessage)}&lang=${request.language}`}
-                        className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-semibold text-sky-300 bg-sky-500/10 hover:bg-sky-500/20 border border-sky-500/30 transition-all duration-150 shadow-sm"
+                        className="inline-flex items-center gap-1.5 px-3 py-1.5 sm:px-3.5 sm:py-2 rounded-xl text-xs font-semibold text-sky-300 bg-sky-500/10 hover:bg-sky-500/20 border border-sky-500/30 transition-all duration-150 shadow-sm"
                         title="Load this error and language back into Diagnostic Studio"
                     >
                         <ExternalLink className="h-3.5 w-3.5" />
-                        Re-Analyze in Studio
+                        <span>Re-Analyze in Studio</span>
                     </Link>
 
                     <button
                         type="button"
                         onClick={handleCopyReport}
-                        className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-semibold text-slate-200 bg-slate-900/80 hover:bg-slate-800 border border-slate-700/80 transition-all duration-150 cursor-pointer shadow-sm"
+                        className="inline-flex items-center gap-1.5 px-3 py-1.5 sm:px-3.5 sm:py-2 rounded-xl text-xs font-semibold text-slate-200 bg-slate-900/80 hover:bg-slate-800 border border-slate-700/80 transition-all duration-150 cursor-pointer shadow-sm"
                     >
                         {copiedReport ? (
                             <>
                                 <Check className="h-3.5 w-3.5 text-emerald-400" />
-                                <span className="text-emerald-400">Copied Report!</span>
+                                <span className="text-emerald-400">Copied!</span>
                             </>
                         ) : (
                             <>
@@ -151,11 +151,11 @@ ${result.codeExample ? `[Production Code Patch]\n${result.codeExample}` : ""}
                         <button
                             type="button"
                             onClick={() => setConfirmDelete(true)}
-                            className="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-semibold text-rose-400 bg-rose-500/10 hover:bg-rose-500/20 border border-rose-500/30 transition-all duration-150 cursor-pointer"
+                            className="inline-flex items-center gap-1.5 px-3 py-1.5 sm:px-3.5 sm:py-2 rounded-xl text-xs font-semibold text-rose-400 bg-rose-500/10 hover:bg-rose-500/20 border border-rose-500/30 transition-all duration-150 cursor-pointer"
                             title="Delete this record"
                         >
                             <Trash2 className="h-3.5 w-3.5" />
-                            Delete
+                            <span>Delete</span>
                         </button>
                     ) : (
                         <div className="flex items-center gap-1.5 bg-rose-950/60 p-1 rounded-xl border border-rose-500/40">
@@ -180,35 +180,35 @@ ${result.codeExample ? `[Production Code Patch]\n${result.codeExample}` : ""}
             </div>
 
             {/* Header Hero Banner */}
-            <div className="relative rounded-2xl bg-gradient-to-br from-slate-950 via-blue-950/40 to-slate-950 border border-sky-500/20 p-6 md:p-8 shadow-2xl overflow-hidden">
+            <div className="relative rounded-xl sm:rounded-2xl bg-gradient-to-br from-slate-950 via-blue-950/40 to-slate-950 border border-sky-500/20 p-4 sm:p-6 md:p-8 shadow-2xl overflow-hidden">
                 <div className="absolute top-0 right-0 w-96 h-96 bg-sky-500/10 rounded-full blur-3xl pointer-events-none" />
-                <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
-                    <div className="flex flex-col gap-3 max-w-3xl">
-                        <div className="flex items-center gap-2.5 flex-wrap">
-                            <span className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider border ${getSeverityBadgeClass(result.severity)}`}>
+                <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-5 sm:gap-6">
+                    <div className="flex flex-col gap-2.5 sm:gap-3 max-w-3xl">
+                        <div className="flex items-center gap-2 sm:gap-2.5 flex-wrap">
+                            <span className={`inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-1 rounded-full text-[11px] sm:text-xs font-bold uppercase tracking-wider border ${getSeverityBadgeClass(result.severity)}`}>
                                 <span className="w-1.5 h-1.5 rounded-full bg-current" />
                                 {severity.label} Severity
                             </span>
-                            <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-mono font-semibold text-sky-300 bg-sky-500/10 border border-sky-500/25">
+                            <span className="inline-flex items-center gap-1 px-2.5 sm:px-3 py-1 rounded-full text-[11px] sm:text-xs font-mono font-semibold text-sky-300 bg-sky-500/10 border border-sky-500/25">
                                 <Code2 className="h-3.5 w-3.5" />
                                 {LANGUAGE_LABELS[request.language] || request.language}
                             </span>
-                            <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs text-slate-400 bg-slate-900/60 border border-slate-800">
+                            <span className="inline-flex items-center gap-1 px-2.5 sm:px-3 py-1 rounded-full text-[11px] sm:text-xs text-slate-400 bg-slate-900/60 border border-slate-800">
                                 <Calendar className="h-3 w-3" />
                                 {formatDate(createdAt)}
                             </span>
                         </div>
 
-                        <h1 className="text-xl md:text-2xl font-extrabold text-white font-mono break-all leading-snug">
+                        <h1 className="text-lg sm:text-xl md:text-2xl font-extrabold text-white font-mono break-all leading-snug">
                             {request.errorMessage}
                         </h1>
 
-                        <p className="text-sm text-slate-300 leading-relaxed font-sans">
+                        <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-sans">
                             {result.errorSummary}
                         </p>
                     </div>
 
-                    <div className="flex md:flex-col items-center md:items-end gap-3 shrink-0">
+                    <div className="flex md:flex-col items-center md:items-end justify-between md:justify-center gap-2 sm:gap-3 shrink-0 pt-2 md:pt-0 border-t md:border-t-0 border-slate-800/80">
                         <div className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-slate-900/80 border border-slate-800 text-xs font-mono text-slate-400">
                             <Hash className="h-3.5 w-3.5 text-sky-400" />
                             <span>{id.slice(0, 12)}</span>
@@ -222,23 +222,23 @@ ${result.codeExample ? `[Production Code Patch]\n${result.codeExample}` : ""}
             </div>
 
             {/* Main Content Grid */}
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 sm:gap-6">
                 {/* Left Column: Input Data (Error Trace & Source Context) */}
-                <div className="lg:col-span-5 flex flex-col gap-6">
+                <div className="lg:col-span-5 flex flex-col gap-5 sm:gap-6">
                     {/* Error Stack Trace Box */}
-                    <div className="rounded-2xl bg-slate-950/80 border border-slate-800/80 shadow-xl overflow-hidden flex flex-col">
-                        <div className="flex items-center justify-between px-4 py-3 bg-slate-900/80 border-b border-slate-800">
-                            <div className="flex items-center gap-2">
-                                <span className="h-2.5 w-2.5 rounded-full bg-rose-500" />
-                                <Terminal className="h-4 w-4 text-rose-400" />
-                                <span className="text-xs font-bold text-white uppercase tracking-wider">
+                    <div className="rounded-xl sm:rounded-2xl bg-slate-950/80 border border-slate-800/80 shadow-xl overflow-hidden flex flex-col">
+                        <div className="flex items-center justify-between px-3.5 py-2.5 sm:px-4 sm:py-3 bg-slate-900/80 border-b border-slate-800 gap-2">
+                            <div className="flex items-center gap-2 min-w-0">
+                                <span className="h-2.5 w-2.5 rounded-full bg-rose-500 shrink-0" />
+                                <Terminal className="h-4 w-4 text-rose-400 shrink-0" />
+                                <span className="text-[11px] sm:text-xs font-bold text-white uppercase tracking-wider truncate">
                                     Raw Error Trace
                                 </span>
                             </div>
                             <button
                                 type="button"
                                 onClick={() => copyToClipboard(request.errorMessage, setCopiedError)}
-                                className="inline-flex items-center gap-1 text-[11px] font-medium text-slate-400 hover:text-white px-2 py-1 rounded bg-slate-800/50 hover:bg-slate-800 transition-colors cursor-pointer"
+                                className="inline-flex items-center gap-1 text-[11px] font-medium text-slate-400 hover:text-white px-2 py-1 rounded bg-slate-800/50 hover:bg-slate-800 transition-colors cursor-pointer shrink-0"
                             >
                                 {copiedError ? (
                                     <>
@@ -253,8 +253,8 @@ ${result.codeExample ? `[Production Code Patch]\n${result.codeExample}` : ""}
                                 )}
                             </button>
                         </div>
-                        <div className="p-4 bg-black/60">
-                            <pre className="font-mono text-xs text-rose-300/90 whitespace-pre-wrap break-all leading-relaxed max-h-[360px] overflow-y-auto">
+                        <div className="p-3.5 sm:p-4 bg-black/60">
+                            <pre className="font-mono text-[11px] sm:text-xs text-rose-300/90 whitespace-pre-wrap break-all leading-relaxed max-h-[360px] overflow-y-auto">
                                 {request.errorMessage}
                             </pre>
                         </div>
@@ -262,21 +262,21 @@ ${result.codeExample ? `[Production Code Patch]\n${result.codeExample}` : ""}
 
                     {/* Source Code Context (if provided) */}
                     {request.codeSnippet && request.codeSnippet.trim() ? (
-                        <div className="rounded-2xl bg-slate-950/80 border border-slate-800/80 shadow-xl overflow-hidden flex flex-col">
-                            <div className="flex items-center justify-between px-4 py-3 bg-slate-900/80 border-b border-slate-800">
-                                <div className="flex items-center gap-2">
-                                    <span className="h-2.5 w-2.5 rounded-full bg-sky-400" />
-                                    <Code2 className="h-4 w-4 text-sky-400" />
-                                    <span className="text-xs font-bold text-white uppercase tracking-wider">
-                                        Surrounding Code Context
+                        <div className="rounded-xl sm:rounded-2xl bg-slate-950/80 border border-slate-800/80 shadow-xl overflow-hidden flex flex-col">
+                            <div className="flex items-center justify-between px-3.5 py-2.5 sm:px-4 sm:py-3 bg-slate-900/80 border-b border-slate-800 gap-2">
+                                <div className="flex items-center gap-2 min-w-0">
+                                    <span className="h-2.5 w-2.5 rounded-full bg-sky-400 shrink-0" />
+                                    <Code2 className="h-4 w-4 text-sky-400 shrink-0" />
+                                    <span className="text-[11px] sm:text-xs font-bold text-white uppercase tracking-wider truncate">
+                                        Source Context
                                     </span>
                                 </div>
-                                <span className="text-[11px] font-mono text-slate-400">
+                                <span className="text-[10px] sm:text-[11px] font-mono text-slate-400 shrink-0">
                                     {LANGUAGE_LABELS[request.language] || request.language}
                                 </span>
                             </div>
-                            <div className="p-4 bg-black/60">
-                                <pre className="font-mono text-xs text-slate-200 whitespace-pre-wrap break-all leading-relaxed max-h-[300px] overflow-y-auto">
+                            <div className="p-3.5 sm:p-4 bg-black/60">
+                                <pre className="font-mono text-[11px] sm:text-xs text-slate-200 whitespace-pre-wrap break-all leading-relaxed max-h-[300px] overflow-y-auto">
                                     {request.codeSnippet}
                                 </pre>
                             </div>
@@ -284,29 +284,29 @@ ${result.codeExample ? `[Production Code Patch]\n${result.codeExample}` : ""}
                     ) : null}
 
                     {/* Diagnostic Metadata Card */}
-                    <div className="rounded-2xl bg-slate-950/60 border border-slate-800/80 p-5 shadow-lg flex flex-col gap-3">
-                        <div className="text-xs font-bold uppercase tracking-wider text-slate-400 flex items-center gap-1.5 pb-2 border-b border-slate-800/80">
+                    <div className="rounded-xl sm:rounded-2xl bg-slate-950/60 border border-slate-800/80 p-4 sm:p-5 shadow-lg flex flex-col gap-3">
+                        <div className="text-[11px] sm:text-xs font-bold uppercase tracking-wider text-slate-400 flex items-center gap-1.5 pb-2 border-b border-slate-800/80">
                             <Clock className="h-3.5 w-3.5 text-sky-400" />
-                            Diagnostic Telemetry
+                            <span>Diagnostic Telemetry</span>
                         </div>
-                        <div className="grid grid-cols-2 gap-3 text-xs">
-                            <div className="flex flex-col gap-0.5 p-3 rounded-xl bg-slate-900/60 border border-slate-800">
-                                <span className="text-slate-500 text-[11px]">Analysis Timestamp</span>
-                                <span className="text-slate-200 font-semibold">{formatDate(createdAt)}</span>
+                        <div className="grid grid-cols-2 gap-2 sm:gap-3 text-xs">
+                            <div className="flex flex-col gap-0.5 p-2.5 sm:p-3 rounded-xl bg-slate-900/60 border border-slate-800">
+                                <span className="text-slate-500 text-[10px] sm:text-[11px]">Timestamp</span>
+                                <span className="text-slate-200 font-semibold text-[11px] sm:text-xs truncate">{formatDate(createdAt)}</span>
                             </div>
-                            <div className="flex flex-col gap-0.5 p-3 rounded-xl bg-slate-900/60 border border-slate-800">
-                                <span className="text-slate-500 text-[11px]">Reasoning Engine</span>
-                                <span className="text-sky-400 font-semibold flex items-center gap-1">
-                                    <Cpu className="h-3 w-3" /> Neural v2.5
+                            <div className="flex flex-col gap-0.5 p-2.5 sm:p-3 rounded-xl bg-slate-900/60 border border-slate-800">
+                                <span className="text-slate-500 text-[10px] sm:text-[11px]">Reasoning Engine</span>
+                                <span className="text-sky-400 font-semibold flex items-center gap-1 text-[11px] sm:text-xs">
+                                    <Cpu className="h-3 w-3 shrink-0" /> Neural v2.5
                                 </span>
                             </div>
-                            <div className="flex flex-col gap-0.5 p-3 rounded-xl bg-slate-900/60 border border-slate-800">
-                                <span className="text-slate-500 text-[11px]">Target Language</span>
-                                <span className="text-slate-200 font-semibold">{LANGUAGE_LABELS[request.language]}</span>
+                            <div className="flex flex-col gap-0.5 p-2.5 sm:p-3 rounded-xl bg-slate-900/60 border border-slate-800">
+                                <span className="text-slate-500 text-[10px] sm:text-[11px]">Target Language</span>
+                                <span className="text-slate-200 font-semibold text-[11px] sm:text-xs truncate">{LANGUAGE_LABELS[request.language]}</span>
                             </div>
-                            <div className="flex flex-col gap-0.5 p-3 rounded-xl bg-slate-900/60 border border-slate-800">
-                                <span className="text-slate-500 text-[11px]">Assessed Severity</span>
-                                <span className={`font-semibold capitalize ${getSeverityTextClass(result.severity)}`}>
+                            <div className="flex flex-col gap-0.5 p-2.5 sm:p-3 rounded-xl bg-slate-900/60 border border-slate-800">
+                                <span className="text-slate-500 text-[10px] sm:text-[11px]">Assessed Severity</span>
+                                <span className={`font-semibold capitalize text-[11px] sm:text-xs ${getSeverityTextClass(result.severity)}`}>
                                     {severity.label}
                                 </span>
                             </div>
@@ -315,12 +315,12 @@ ${result.codeExample ? `[Production Code Patch]\n${result.codeExample}` : ""}
                 </div>
 
                 {/* Right Column: AI Analysis Verdict, Cause, Solution & Code Fix */}
-                <div className="lg:col-span-7 flex flex-col gap-6">
+                <div className="lg:col-span-7 flex flex-col gap-5 sm:gap-6">
                     {/* Root Cause Card */}
-                    <div className="rounded-2xl bg-slate-950/80 border border-sky-500/25 p-6 shadow-xl flex flex-col gap-3 relative overflow-hidden">
-                        <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-sky-400">
+                    <div className="rounded-xl sm:rounded-2xl bg-slate-950/80 border border-sky-500/25 p-4 sm:p-6 shadow-xl flex flex-col gap-2.5 sm:gap-3 relative overflow-hidden">
+                        <div className="flex items-center gap-2 text-[11px] sm:text-xs font-bold uppercase tracking-wider text-sky-400">
                             <Lightbulb className="h-4 w-4" />
-                            Root Cause Isolation
+                            <span>Root Cause Isolation</span>
                         </div>
                         <p className="text-sm md:text-base text-slate-100 font-medium leading-relaxed">
                             {result.possibleCause}
@@ -328,24 +328,24 @@ ${result.codeExample ? `[Production Code Patch]\n${result.codeExample}` : ""}
                     </div>
 
                     {/* Technical Explanation Card */}
-                    <div className="rounded-2xl bg-slate-950/80 border border-slate-800/80 p-6 shadow-xl flex flex-col gap-3">
-                        <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-blue-400">
+                    <div className="rounded-xl sm:rounded-2xl bg-slate-950/80 border border-slate-800/80 p-4 sm:p-6 shadow-xl flex flex-col gap-2.5 sm:gap-3">
+                        <div className="flex items-center gap-2 text-[11px] sm:text-xs font-bold uppercase tracking-wider text-blue-400">
                             <FileText className="h-4 w-4" />
-                            Technical Breakdown &amp; Architectural Context
+                            <span>Technical Breakdown</span>
                         </div>
-                        <p className="text-sm text-slate-300 leading-relaxed whitespace-pre-wrap">
+                        <p className="text-xs sm:text-sm text-slate-300 leading-relaxed whitespace-pre-wrap">
                             {result.explanation}
                         </p>
                     </div>
 
                     {/* Step-by-Step Resolution */}
-                    <div className="rounded-2xl bg-slate-950/80 border border-emerald-500/25 p-6 shadow-xl flex flex-col gap-3">
-                        <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-emerald-400">
+                    <div className="rounded-xl sm:rounded-2xl bg-slate-950/80 border border-emerald-500/25 p-4 sm:p-6 shadow-xl flex flex-col gap-2.5 sm:gap-3">
+                        <div className="flex items-center gap-2 text-[11px] sm:text-xs font-bold uppercase tracking-wider text-emerald-400">
                             <Wrench className="h-4 w-4" />
-                            Step-by-Step Action Plan
+                            <span>Step-by-Step Action Plan</span>
                         </div>
-                        <div className="p-4 rounded-xl bg-black/40 border border-emerald-500/20">
-                            <p className="text-sm text-slate-200 leading-relaxed whitespace-pre-wrap font-medium">
+                        <div className="p-3.5 sm:p-4 rounded-xl bg-black/40 border border-emerald-500/20">
+                            <p className="text-xs sm:text-sm text-slate-200 leading-relaxed whitespace-pre-wrap font-medium">
                                 {result.suggestedSolution}
                             </p>
                         </div>
@@ -353,28 +353,28 @@ ${result.codeExample ? `[Production Code Patch]\n${result.codeExample}` : ""}
 
                     {/* Production Code Fix */}
                     {result.codeExample && result.codeExample.trim() ? (
-                        <div className="rounded-2xl bg-slate-950/90 border border-sky-500/30 shadow-2xl overflow-hidden flex flex-col">
-                            <div className="flex items-center justify-between px-5 py-3.5 bg-slate-900/90 border-b border-slate-800">
-                                <div className="flex items-center gap-2.5">
-                                    <div className="flex items-center gap-1.5">
+                        <div className="rounded-xl sm:rounded-2xl bg-slate-950/90 border border-sky-500/30 shadow-2xl overflow-hidden flex flex-col">
+                            <div className="flex items-center justify-between px-3.5 py-2.5 sm:px-5 sm:py-3.5 bg-slate-900/90 border-b border-slate-800 gap-2">
+                                <div className="flex items-center gap-2 min-w-0">
+                                    <div className="flex items-center gap-1.5 shrink-0">
                                         <span className="h-2.5 w-2.5 rounded-full bg-rose-500" />
                                         <span className="h-2.5 w-2.5 rounded-full bg-amber-500" />
                                         <span className="h-2.5 w-2.5 rounded-full bg-emerald-500" />
                                     </div>
-                                    <span className="text-xs font-mono font-bold text-sky-300 ml-2">
-                                        {LANGUAGE_LABELS[request.language]} Patch Solution
+                                    <span className="text-[11px] sm:text-xs font-mono font-bold text-sky-300 ml-1 sm:ml-2 truncate">
+                                        {LANGUAGE_LABELS[request.language]} Patch
                                     </span>
                                 </div>
 
                                 <button
                                     type="button"
                                     onClick={() => copyToClipboard(result.codeExample!, setCopiedFix)}
-                                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-200 bg-slate-800/80 hover:bg-slate-700 border border-slate-700 transition-colors cursor-pointer"
+                                    className="inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-200 bg-slate-800/80 hover:bg-slate-700 border border-slate-700 transition-colors cursor-pointer shrink-0"
                                 >
                                     {copiedFix ? (
                                         <>
                                             <Check className="h-3.5 w-3.5 text-emerald-400" />
-                                            <span className="text-emerald-400">Copied Patch!</span>
+                                            <span className="text-emerald-400">Copied!</span>
                                         </>
                                     ) : (
                                         <>
@@ -384,8 +384,8 @@ ${result.codeExample ? `[Production Code Patch]\n${result.codeExample}` : ""}
                                     )}
                                 </button>
                             </div>
-                            <div className="p-5 bg-black/80 overflow-x-auto">
-                                <pre className="font-mono text-xs text-slate-100 leading-relaxed">
+                            <div className="p-3.5 sm:p-5 bg-black/80 overflow-x-auto">
+                                <pre className="font-mono text-[11px] sm:text-xs text-slate-100 leading-relaxed">
                                     <code>{result.codeExample}</code>
                                 </pre>
                             </div>

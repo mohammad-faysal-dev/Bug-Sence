@@ -13,31 +13,37 @@ interface TopNavProps {
 
 export function TopNav({ title, subtitle, onMenuClick, actions }: TopNavProps) {
     return (
-        <header className="sticky top-0 z-30 flex items-center justify-between px-6 py-4 md:px-10 bg-slate-950/80 backdrop-blur-md border-b border-sky-500/15">
-            <div className="flex items-center gap-4">
+        <header className="sticky top-0 z-30 flex items-center justify-between px-4 py-3 sm:px-6 sm:py-4 md:px-10 bg-slate-950/80 backdrop-blur-md border-b border-sky-500/15 gap-3">
+            <div className="flex items-center gap-3 sm:gap-4 min-w-0">
                 <Button
                     variant="outline"
                     size="icon"
-                    className="md:hidden text-slate-300 hover:text-white"
+                    className="md:hidden text-slate-300 hover:text-white shrink-0 h-9 w-9"
                     onClick={onMenuClick}
                     aria-label="Toggle sidebar"
                 >
                     <Menu className="h-4 w-4" />
                 </Button>
-                <div>
-                    <h1 className="text-base font-bold text-white tracking-tight">{title}</h1>
-                    {subtitle && <p className="text-xs text-slate-400 mt-0.5">{subtitle}</p>}
+                <div className="min-w-0">
+                    <h1 className="text-sm sm:text-base font-bold text-white tracking-tight truncate">
+                        {title}
+                    </h1>
+                    {subtitle && (
+                        <p className="text-xs text-slate-400 mt-0.5 truncate hidden sm:block">
+                            {subtitle}
+                        </p>
+                    )}
                 </div>
             </div>
             
-            <div className="flex items-center gap-3">
-                <div className="hidden sm:flex items-center gap-2">
+            <div className="flex items-center gap-2 sm:gap-3 shrink-0">
+                <div className="hidden lg:flex items-center gap-2">
                     <Badge variant="cyan" className="gap-2 py-1 px-3 text-xs font-medium">
                         <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse shadow-sm shadow-emerald-400" />
                         AI Diagnostic Engine Online
                     </Badge>
                 </div>
-                {actions && <div>{actions}</div>}
+                {actions && <div className="shrink-0">{actions}</div>}
             </div>
         </header>
     );

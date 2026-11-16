@@ -41,7 +41,7 @@ export function AppShell({
                     onMenuClick={() => setSidebarOpen((prev) => !prev)}
                     actions={topNavActions}
                 />
-                <main className="flex-1 px-4 py-6 sm:px-8 sm:py-8 md:px-10 md:py-10 max-w-[1680px] w-full mx-auto">
+                <main className="flex-1 px-3 py-5 sm:px-6 sm:py-8 md:px-10 md:py-10 max-w-[1680px] w-full mx-auto">
                     {children}
                 </main>
             </div>

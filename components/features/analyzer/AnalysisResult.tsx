@@ -84,16 +84,16 @@ ${result.codeExample ? `[Code Fix]\n${result.codeExample}` : ""}
     };
 
     return (
-        <div className="flex flex-col gap-5 w-full">
+        <div className="flex flex-col gap-4 sm:gap-5 w-full">
             {/* Result Header */}
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-5 rounded-2xl bg-gradient-to-r from-slate-950 via-[#07132e] to-slate-950 border border-sky-500/25 shadow-xl">
-                <div className="flex items-center gap-4">
-                    <div className="w-11 h-11 rounded-xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400 shrink-0 shadow-sm shadow-emerald-500/10">
-                        <CheckCircle2 className="w-6 h-6" />
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-4 sm:p-5 rounded-xl sm:rounded-2xl bg-gradient-to-r from-slate-950 via-[#07132e] to-slate-950 border border-sky-500/25 shadow-xl">
+                <div className="flex items-center gap-3 sm:gap-4">
+                    <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400 shrink-0 shadow-sm shadow-emerald-500/10">
+                        <CheckCircle2 className="w-5 h-5 sm:w-6 sm:h-6" />
                     </div>
                     <div>
-                        <div className="flex items-center gap-2">
-                            <h2 className="text-lg font-extrabold text-white tracking-tight">
+                        <div className="flex items-center gap-2 flex-wrap">
+                            <h2 className="text-base sm:text-lg font-extrabold text-white tracking-tight">
                                 Diagnostic Complete
                             </h2>
                             <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full font-mono text-[10px] font-semibold text-sky-300 bg-sky-500/15 border border-sky-500/30">
@@ -101,14 +101,14 @@ ${result.codeExample ? `[Code Fix]\n${result.codeExample}` : ""}
                                 BugSense AI
                             </span>
                         </div>
-                        <p className="text-xs text-slate-400 mt-0.5">
+                        <p className="text-[11px] sm:text-xs text-slate-400 mt-0.5">
                             {LANGUAGE_LABELS[request.language]} · {formatDate(createdAt)}
                         </p>
                     </div>
                 </div>
 
-                <div className="flex items-center gap-2.5 flex-wrap">
-                    <span className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider border ${getSeverityBadgeClass(result.severity)}`}>
+                <div className="flex items-center gap-2 sm:gap-2.5 flex-wrap">
+                    <span className={`inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-1 rounded-full text-[11px] sm:text-xs font-bold uppercase tracking-wider border ${getSeverityBadgeClass(result.severity)}`}>
                         <span className="w-1.5 h-1.5 rounded-full bg-current" />
                         {severity.label} Severity
                     </span>
@@ -122,7 +122,7 @@ ${result.codeExample ? `[Code Fix]\n${result.codeExample}` : ""}
                         {copiedAll ? (
                             <>
                                 <Check className="w-3.5 h-3.5 text-emerald-400" />
-                                <span className="text-emerald-400">Copied Report!</span>
+                                <span className="text-emerald-400">Copied!</span>
                             </>
                         ) : (
                             <>
@@ -136,7 +136,7 @@ ${result.codeExample ? `[Code Fix]\n${result.codeExample}` : ""}
                         <button
                             id="save-result-button"
                             type="button"
-                            className={`inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl text-xs font-semibold transition-all cursor-pointer shadow-sm ${
+                            className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold transition-all cursor-pointer shadow-sm ${
                                 isSaved
                                     ? "bg-emerald-500/15 text-emerald-300 border border-emerald-500/40 cursor-default"
                                     : "bg-slate-900/80 text-slate-200 border border-slate-700/80 hover:bg-slate-800 hover:text-white"
@@ -165,54 +165,54 @@ ${result.codeExample ? `[Code Fix]\n${result.codeExample}` : ""}
                         title="Open history archive"
                     >
                         <History className="w-3.5 h-3.5 text-sky-400" />
-                        <span>View in History</span>
+                        <span>View History</span>
                     </Link>
                 </div>
             </div>
 
             {/* Result Cards Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 w-full">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3.5 sm:gap-4 w-full">
                 {/* Error Summary */}
-                <div className="flex flex-col gap-2.5 p-5 rounded-2xl bg-slate-950/80 border border-amber-500/25 shadow-lg">
-                    <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-amber-400 pb-2 border-b border-slate-800/80">
-                        <AlertTriangle className="w-4 h-4" />
-                        Error Summary
+                <div className="flex flex-col gap-2.5 p-4 sm:p-5 rounded-xl sm:rounded-2xl bg-slate-950/80 border border-amber-500/25 shadow-lg">
+                    <div className="flex items-center gap-2 text-[11px] sm:text-xs font-bold uppercase tracking-wider text-amber-400 pb-2 border-b border-slate-800/80">
+                        <AlertTriangle className="w-4 h-4 shrink-0" />
+                        <span>Error Summary</span>
                     </div>
-                    <p className="text-sm text-slate-200 font-medium leading-relaxed">
+                    <p className="text-xs sm:text-sm text-slate-200 font-medium leading-relaxed">
                         {result.errorSummary}
                     </p>
                 </div>
 
                 {/* Root Cause */}
-                <div className="flex flex-col gap-2.5 p-5 rounded-2xl bg-slate-950/80 border border-sky-500/25 shadow-lg">
-                    <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-sky-400 pb-2 border-b border-slate-800/80">
-                        <Lightbulb className="w-4 h-4" />
-                        Root Cause
+                <div className="flex flex-col gap-2.5 p-4 sm:p-5 rounded-xl sm:rounded-2xl bg-slate-950/80 border border-sky-500/25 shadow-lg">
+                    <div className="flex items-center gap-2 text-[11px] sm:text-xs font-bold uppercase tracking-wider text-sky-400 pb-2 border-b border-slate-800/80">
+                        <Lightbulb className="w-4 h-4 shrink-0" />
+                        <span>Root Cause</span>
                     </div>
-                    <p className="text-sm text-slate-200 font-medium leading-relaxed">
+                    <p className="text-xs sm:text-sm text-slate-200 font-medium leading-relaxed">
                         {result.possibleCause}
                     </p>
                 </div>
 
                 {/* Technical Explanation - full width */}
-                <div className="md:col-span-2 flex flex-col gap-2.5 p-5 rounded-2xl bg-slate-950/80 border border-slate-800/80 shadow-lg">
-                    <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-blue-400 pb-2 border-b border-slate-800/80">
-                        <FileText className="w-4 h-4" />
-                        Technical Explanation
+                <div className="md:col-span-2 flex flex-col gap-2.5 p-4 sm:p-5 rounded-xl sm:rounded-2xl bg-slate-950/80 border border-slate-800/80 shadow-lg">
+                    <div className="flex items-center gap-2 text-[11px] sm:text-xs font-bold uppercase tracking-wider text-blue-400 pb-2 border-b border-slate-800/80">
+                        <FileText className="w-4 h-4 shrink-0" />
+                        <span>Technical Explanation</span>
                     </div>
-                    <p className="text-sm text-slate-300 leading-relaxed whitespace-pre-wrap">
+                    <p className="text-xs sm:text-sm text-slate-300 leading-relaxed whitespace-pre-wrap">
                         {result.explanation}
                     </p>
                 </div>
 
                 {/* Suggested Solution - full width */}
-                <div className="md:col-span-2 flex flex-col gap-2.5 p-5 rounded-2xl bg-slate-950/80 border border-emerald-500/25 shadow-lg">
-                    <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-emerald-400 pb-2 border-b border-slate-800/80">
-                        <Wrench className="w-4 h-4" />
-                        Step-by-Step Resolution
+                <div className="md:col-span-2 flex flex-col gap-2.5 p-4 sm:p-5 rounded-xl sm:rounded-2xl bg-slate-950/80 border border-emerald-500/25 shadow-lg">
+                    <div className="flex items-center gap-2 text-[11px] sm:text-xs font-bold uppercase tracking-wider text-emerald-400 pb-2 border-b border-slate-800/80">
+                        <Wrench className="w-4 h-4 shrink-0" />
+                        <span>Step-by-Step Resolution</span>
                     </div>
-                    <div className="p-4 rounded-xl bg-black/40 border border-emerald-500/20">
-                        <p className="text-sm text-slate-100 font-medium leading-relaxed whitespace-pre-wrap">
+                    <div className="p-3.5 sm:p-4 rounded-xl bg-black/40 border border-emerald-500/20">
+                        <p className="text-xs sm:text-sm text-slate-100 font-medium leading-relaxed whitespace-pre-wrap">
                             {result.suggestedSolution}
                         </p>
                     </div>
@@ -220,20 +220,20 @@ ${result.codeExample ? `[Code Fix]\n${result.codeExample}` : ""}
 
                 {/* Code Example - full width */}
                 {result.codeExample && result.codeExample.trim() ? (
-                    <div className="md:col-span-2 rounded-2xl bg-slate-950/90 border border-sky-500/30 shadow-2xl overflow-hidden flex flex-col">
-                        <div className="flex items-center justify-between px-4 py-3 bg-slate-900/90 border-b border-slate-800">
-                            <div className="flex items-center gap-2">
-                                <span className="w-2.5 h-2.5 rounded-full bg-rose-500" />
-                                <span className="w-2.5 h-2.5 rounded-full bg-amber-500" />
-                                <span className="w-2.5 h-2.5 rounded-full bg-emerald-500" />
-                                <span className="text-xs font-mono font-bold text-sky-400 ml-2">
+                    <div className="md:col-span-2 rounded-xl sm:rounded-2xl bg-slate-950/90 border border-sky-500/30 shadow-2xl overflow-hidden flex flex-col">
+                        <div className="flex items-center justify-between px-3.5 py-2.5 sm:px-4 sm:py-3 bg-slate-900/90 border-b border-slate-800 gap-2">
+                            <div className="flex items-center gap-2 min-w-0">
+                                <span className="w-2.5 h-2.5 rounded-full bg-rose-500 shrink-0" />
+                                <span className="w-2.5 h-2.5 rounded-full bg-amber-500 shrink-0" />
+                                <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 shrink-0" />
+                                <span className="text-[11px] sm:text-xs font-mono font-bold text-sky-400 ml-1 sm:ml-2 truncate">
                                     {LANGUAGE_LABELS[request.language]} Fix
                                 </span>
                             </div>
 
                             <button
                                 type="button"
-                                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-300 bg-slate-800/80 hover:bg-slate-700 hover:text-white border border-slate-700 transition-colors cursor-pointer"
+                                className="inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-300 bg-slate-800/80 hover:bg-slate-700 hover:text-white border border-slate-700 transition-colors cursor-pointer shrink-0"
                                 onClick={() => copyToClipboard(result.codeExample!)}
                                 title="Copy code snippet"
                             >
@@ -250,7 +250,7 @@ ${result.codeExample ? `[Code Fix]\n${result.codeExample}` : ""}
                                 )}
                             </button>
                         </div>
-                        <pre className="p-5 overflow-x-auto font-mono text-xs text-slate-100 leading-relaxed bg-black/70">
+                        <pre className="p-3.5 sm:p-5 overflow-x-auto font-mono text-[11px] sm:text-xs text-slate-100 leading-relaxed bg-black/70">
                             <code>{result.codeExample}</code>
                         </pre>
                     </div>

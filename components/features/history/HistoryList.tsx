@@ -120,57 +120,57 @@ export function HistoryList({
     // ── EMPTY STATE: Pure Tailwind CSS ──
     if (history.length === 0) {
         return (
-            <div className="relative w-full rounded-3xl border border-sky-500/25 bg-gradient-to-b from-slate-950 via-[#07132e] to-slate-950 p-12 sm:p-16 md:p-24 text-center shadow-2xl overflow-hidden flex flex-col items-center gap-8">
+            <div className="relative w-full rounded-2xl sm:rounded-3xl border border-sky-500/25 bg-gradient-to-b from-slate-950 via-[#07132e] to-slate-950 p-6 sm:p-12 md:p-20 text-center shadow-2xl overflow-hidden flex flex-col items-center gap-6 sm:gap-8">
                 {/* Background Ambient Glow */}
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full bg-sky-500/10 blur-3xl pointer-events-none" />
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px] sm:w-[500px] h-[350px] sm:h-[500px] rounded-full bg-sky-500/10 blur-3xl pointer-events-none" />
 
                 {/* Glowing Radar Icon Badge */}
                 <div className="relative z-10 flex items-center justify-center">
-                    <div className="relative w-24 h-24 sm:w-28 sm:h-28 rounded-3xl flex items-center justify-center border border-sky-500/30 bg-gradient-to-br from-slate-900 to-blue-950 text-sky-400 shadow-2xl shadow-sky-500/20">
-                        <Clock className="w-12 h-12 text-sky-400" />
-                        <span className="absolute -top-1 -right-1 flex w-4 h-4">
+                    <div className="relative w-20 h-20 sm:w-28 sm:h-28 rounded-2xl sm:rounded-3xl flex items-center justify-center border border-sky-500/30 bg-gradient-to-br from-slate-900 to-blue-950 text-sky-400 shadow-2xl shadow-sky-500/20">
+                        <Clock className="w-10 h-10 sm:w-12 sm:h-12 text-sky-400" />
+                        <span className="absolute -top-1 -right-1 flex w-3.5 h-3.5 sm:w-4 sm:h-4">
                             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-sky-400 opacity-75" />
-                            <span className="relative inline-flex rounded-full w-4 h-4 bg-sky-500" />
+                            <span className="relative inline-flex rounded-full w-3.5 h-3.5 sm:w-4 sm:h-4 bg-sky-500" />
                         </span>
                     </div>
                 </div>
 
                 {/* Title & Description */}
-                <div className="relative z-10 flex flex-col gap-3.5 max-w-lg">
-                    <div className="inline-flex items-center justify-center gap-1.5 px-3.5 py-1 rounded-full text-xs font-semibold text-sky-300 bg-sky-500/10 border border-sky-500/25 mx-auto">
+                <div className="relative z-10 flex flex-col gap-2.5 sm:gap-3.5 max-w-lg">
+                    <div className="inline-flex items-center justify-center gap-1.5 px-3 py-1 rounded-full text-[11px] sm:text-xs font-semibold text-sky-300 bg-sky-500/10 border border-sky-500/25 mx-auto">
                         <BookmarkCheck className="w-3.5 h-3.5" />
-                        Persistent Diagnostic Archive
+                        <span>Persistent Diagnostic Archive</span>
                     </div>
-                    <h2 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
+                    <h2 className="text-xl sm:text-3xl font-extrabold text-white tracking-tight">
                         No Diagnostic Records Saved Yet
                     </h2>
-                    <p className="text-sm sm:text-base text-slate-300 leading-relaxed font-normal">
+                    <p className="text-xs sm:text-base text-slate-300 leading-relaxed font-normal">
                         Your analyzed bug solutions will be preserved here with complete root-cause breakdowns, technical explanations, and copy-paste verified code patches.
                     </p>
                 </div>
 
                 {/* Call-to-action Button */}
-                <div className="relative z-10 flex flex-col sm:flex-row items-center gap-3 pt-2">
+                <div className="relative z-10 flex flex-col sm:flex-row items-center gap-3 pt-2 w-full sm:w-auto">
                     <Link
                         href="/analyzer"
-                        className="inline-flex items-center gap-2.5 px-8 py-3.5 rounded-xl text-sm font-bold text-white bg-gradient-to-r from-blue-600 via-sky-500 to-cyan-400 shadow-lg shadow-sky-500/30 hover:shadow-sky-500/50 hover:brightness-110 active:scale-[0.98] transition-all duration-200 cursor-pointer"
+                        className="inline-flex items-center justify-center gap-2.5 px-6 sm:px-8 py-3 sm:py-3.5 rounded-xl text-xs sm:text-sm font-bold text-white bg-gradient-to-r from-blue-600 via-sky-500 to-cyan-400 shadow-lg shadow-sky-500/30 hover:shadow-sky-500/50 hover:brightness-110 active:scale-[0.98] transition-all duration-200 cursor-pointer w-full sm:w-auto"
                     >
                         <Sparkles className="w-4 h-4" />
-                        Start Your First Analysis
+                        <span>Start Your First Analysis</span>
                     </Link>
                 </div>
 
                 {/* Bottom Quick Feature Highlights */}
-                <div className="relative z-10 grid grid-cols-1 sm:grid-cols-3 gap-3.5 pt-8 border-t border-slate-800/80 w-full max-w-2xl text-xs text-slate-400">
-                    <div className="flex items-center justify-center gap-2 p-3.5 rounded-xl bg-slate-900/40 border border-slate-800/60">
+                <div className="relative z-10 grid grid-cols-1 sm:grid-cols-3 gap-2.5 sm:gap-3.5 pt-6 sm:pt-8 border-t border-slate-800/80 w-full max-w-2xl text-[11px] sm:text-xs text-slate-400">
+                    <div className="flex items-center justify-center gap-2 p-3 sm:p-3.5 rounded-xl bg-slate-900/40 border border-slate-800/60">
                         <Zap className="w-4 h-4 text-sky-400 shrink-0" />
                         <span>Instant Error Decoding</span>
                     </div>
-                    <div className="flex items-center justify-center gap-2 p-3.5 rounded-xl bg-slate-900/40 border border-slate-800/60">
+                    <div className="flex items-center justify-center gap-2 p-3 sm:p-3.5 rounded-xl bg-slate-900/40 border border-slate-800/60">
                         <Bug className="w-4 h-4 text-blue-400 shrink-0" />
                         <span>Deep Root Cause Isolation</span>
                     </div>
-                    <div className="flex items-center justify-center gap-2 p-3.5 rounded-xl bg-slate-900/40 border border-slate-800/60">
+                    <div className="flex items-center justify-center gap-2 p-3 sm:p-3.5 rounded-xl bg-slate-900/40 border border-slate-800/60">
                         <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
                         <span>Verified Code Patches</span>
                     </div>
@@ -194,38 +194,38 @@ export function HistoryList({
     };
 
     return (
-        <div className="flex flex-col gap-8 w-full animate-in fade-in-50 duration-200">
+        <div className="flex flex-col gap-6 sm:gap-8 w-full animate-in fade-in-50 duration-200">
             {/* 1. Telemetry Cards */}
-            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
-                <div className="flex flex-col gap-1 p-5 rounded-2xl bg-gradient-to-br from-slate-950 via-[#07132e] to-slate-950 border border-sky-500/20 shadow-md">
-                    <span className="text-xs font-semibold text-slate-400">Saved Records</span>
-                    <span className="text-2xl font-extrabold text-white">{stats.total}</span>
-                    <span className="text-[11px] text-sky-400/80 font-mono">Archived Solutions</span>
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-2.5 sm:gap-4">
+                <div className="flex flex-col gap-0.5 sm:gap-1 p-3.5 sm:p-5 rounded-xl sm:rounded-2xl bg-gradient-to-br from-slate-950 via-[#07132e] to-slate-950 border border-sky-500/20 shadow-md">
+                    <span className="text-[11px] sm:text-xs font-semibold text-slate-400">Saved Records</span>
+                    <span className="text-xl sm:text-2xl font-extrabold text-white">{stats.total}</span>
+                    <span className="text-[10px] sm:text-[11px] text-sky-400/80 font-mono truncate">Archived Solutions</span>
                 </div>
-                <div className="flex flex-col gap-1 p-5 rounded-2xl bg-gradient-to-br from-slate-950 via-[#07132e] to-slate-950 border border-rose-500/30 shadow-md">
-                    <span className="text-xs font-semibold text-rose-400">Critical Bugs</span>
-                    <span className="text-2xl font-extrabold text-rose-400">{stats.critical}</span>
-                    <span className="text-[11px] text-slate-400 font-mono">Immediate Attention</span>
+                <div className="flex flex-col gap-0.5 sm:gap-1 p-3.5 sm:p-5 rounded-xl sm:rounded-2xl bg-gradient-to-br from-slate-950 via-[#07132e] to-slate-950 border border-rose-500/30 shadow-md">
+                    <span className="text-[11px] sm:text-xs font-semibold text-rose-400">Critical Bugs</span>
+                    <span className="text-xl sm:text-2xl font-extrabold text-rose-400">{stats.critical}</span>
+                    <span className="text-[10px] sm:text-[11px] text-slate-400 font-mono truncate">Immediate Attention</span>
                 </div>
-                <div className="flex flex-col gap-1 p-5 rounded-2xl bg-gradient-to-br from-slate-950 via-[#07132e] to-slate-950 border border-orange-500/30 shadow-md">
-                    <span className="text-xs font-semibold text-orange-400">High Severity</span>
-                    <span className="text-2xl font-extrabold text-orange-400">{stats.high}</span>
-                    <span className="text-[11px] text-slate-400 font-mono">Blockers</span>
+                <div className="flex flex-col gap-0.5 sm:gap-1 p-3.5 sm:p-5 rounded-xl sm:rounded-2xl bg-gradient-to-br from-slate-950 via-[#07132e] to-slate-950 border border-orange-500/30 shadow-md">
+                    <span className="text-[11px] sm:text-xs font-semibold text-orange-400">High Severity</span>
+                    <span className="text-xl sm:text-2xl font-extrabold text-orange-400">{stats.high}</span>
+                    <span className="text-[10px] sm:text-[11px] text-slate-400 font-mono truncate">Blockers</span>
                 </div>
-                <div className="flex flex-col gap-1 p-5 rounded-2xl bg-gradient-to-br from-slate-950 via-[#07132e] to-slate-950 border border-amber-500/30 shadow-md">
-                    <span className="text-xs font-semibold text-amber-400">Medium/Low</span>
-                    <span className="text-2xl font-extrabold text-amber-400">{stats.medium + stats.low}</span>
-                    <span className="text-[11px] text-slate-400 font-mono">Warning/Notice</span>
+                <div className="flex flex-col gap-0.5 sm:gap-1 p-3.5 sm:p-5 rounded-xl sm:rounded-2xl bg-gradient-to-br from-slate-950 via-[#07132e] to-slate-950 border border-amber-500/30 shadow-md">
+                    <span className="text-[11px] sm:text-xs font-semibold text-amber-400">Medium/Low</span>
+                    <span className="text-xl sm:text-2xl font-extrabold text-amber-400">{stats.medium + stats.low}</span>
+                    <span className="text-[10px] sm:text-[11px] text-slate-400 font-mono truncate">Warning/Notice</span>
                 </div>
-                <div className="col-span-2 sm:col-span-1 flex flex-col gap-1 p-5 rounded-2xl bg-gradient-to-br from-slate-950 via-[#07132e] to-slate-950 border border-emerald-500/30 shadow-md">
-                    <span className="text-xs font-semibold text-emerald-400">Languages</span>
-                    <span className="text-2xl font-extrabold text-emerald-400">{stats.languages.length}</span>
-                    <span className="text-[11px] text-slate-400 font-mono">Tech Stacks Covered</span>
+                <div className="col-span-2 sm:col-span-1 flex flex-col gap-0.5 sm:gap-1 p-3.5 sm:p-5 rounded-xl sm:rounded-2xl bg-gradient-to-br from-slate-950 via-[#07132e] to-slate-950 border border-emerald-500/30 shadow-md">
+                    <span className="text-[11px] sm:text-xs font-semibold text-emerald-400">Languages</span>
+                    <span className="text-xl sm:text-2xl font-extrabold text-emerald-400">{stats.languages.length}</span>
+                    <span className="text-[10px] sm:text-[11px] text-slate-400 font-mono truncate">Tech Stacks Covered</span>
                 </div>
             </div>
 
             {/* 2. Search & Filter Bar */}
-            <div className="flex flex-col md:flex-row items-stretch md:items-center justify-between gap-4 p-4 rounded-2xl bg-slate-950/80 border border-sky-500/20 shadow-lg">
+            <div className="flex flex-col md:flex-row items-stretch md:items-center justify-between gap-3 sm:gap-4 p-3.5 sm:p-4 rounded-xl sm:rounded-2xl bg-slate-950/80 border border-sky-500/20 shadow-lg">
                 {/* Search Input */}
                 <div className="relative flex-1">
                     <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 pointer-events-none" />
@@ -248,12 +248,12 @@ export function HistoryList({
                 </div>
 
                 {/* Filters & Actions */}
-                <div className="flex items-center gap-2.5 flex-wrap">
+                <div className="flex items-center gap-2 sm:gap-2.5 flex-wrap">
                     {/* Severity Filter */}
                     <select
                         value={selectedSeverity}
                         onChange={(e) => setSelectedSeverity(e.target.value)}
-                        className="px-3 py-2 rounded-xl border border-slate-800 bg-black/50 text-xs font-medium text-slate-300 focus:outline-none focus:border-sky-500/60 cursor-pointer"
+                        className="flex-1 sm:flex-initial px-3 py-2 rounded-xl border border-slate-800 bg-black/50 text-xs font-medium text-slate-300 focus:outline-none focus:border-sky-500/60 cursor-pointer"
                     >
                         <option value="all">All Severities</option>
                         <option value="critical">Critical</option>
@@ -266,7 +266,7 @@ export function HistoryList({
                     <select
                         value={selectedLanguage}
                         onChange={(e) => setSelectedLanguage(e.target.value)}
-                        className="px-3 py-2 rounded-xl border border-slate-800 bg-black/50 text-xs font-medium text-slate-300 focus:outline-none focus:border-sky-500/60 cursor-pointer"
+                        className="flex-1 sm:flex-initial px-3 py-2 rounded-xl border border-slate-800 bg-black/50 text-xs font-medium text-slate-300 focus:outline-none focus:border-sky-500/60 cursor-pointer"
                     >
                         <option value="all">All Languages</option>
                         {stats.languages.map((lang) => (
@@ -280,7 +280,7 @@ export function HistoryList({
                     <select
                         value={sortBy}
                         onChange={(e) => setSortBy(e.target.value as SortOption)}
-                        className="px-3 py-2 rounded-xl border border-slate-800 bg-black/50 text-xs font-medium text-slate-300 focus:outline-none focus:border-sky-500/60 cursor-pointer"
+                        className="flex-1 sm:flex-initial px-3 py-2 rounded-xl border border-slate-800 bg-black/50 text-xs font-medium text-slate-300 focus:outline-none focus:border-sky-500/60 cursor-pointer"
                     >
                         <option value="newest">Newest First</option>
                         <option value="oldest">Oldest First</option>
@@ -291,11 +291,11 @@ export function HistoryList({
                     <button
                         type="button"
                         onClick={handleExportJson}
-                        className="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-medium text-slate-300 bg-slate-900 border border-slate-700 hover:bg-slate-800 hover:text-white transition-colors cursor-pointer"
+                        className="inline-flex items-center justify-center gap-1.5 px-3 py-2 rounded-xl text-xs font-medium text-slate-300 bg-slate-900 border border-slate-700 hover:bg-slate-800 hover:text-white transition-colors cursor-pointer"
                         title="Export diagnostic archive to JSON"
                     >
                         <Download className="w-3.5 h-3.5" />
-                        Export
+                        <span>Export</span>
                     </button>
 
                     {/* Clear All */}
@@ -303,10 +303,10 @@ export function HistoryList({
                         <button
                             type="button"
                             onClick={() => setConfirmClearAll(true)}
-                            className="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-medium text-rose-400 bg-rose-500/10 border border-rose-500/25 hover:bg-rose-500/20 transition-colors cursor-pointer"
+                            className="inline-flex items-center justify-center gap-1.5 px-3 py-2 rounded-xl text-xs font-medium text-rose-400 bg-rose-500/10 border border-rose-500/25 hover:bg-rose-500/20 transition-colors cursor-pointer"
                         >
                             <Trash2 className="w-3.5 h-3.5" />
-                            Clear Archive
+                            <span>Clear Archive</span>
                         </button>
                     ) : (
                         <div className="flex items-center gap-1.5 bg-rose-950/80 border border-rose-500/40 rounded-xl px-2.5 py-1.5">
@@ -349,7 +349,7 @@ export function HistoryList({
                             <div
                                 key={record.id}
                                 onClick={() => onSelect(record)}
-                                className="group relative rounded-2xl border border-sky-500/20 bg-gradient-to-br from-slate-950 via-[#07132e] to-slate-950 p-5 sm:p-6 hover:border-sky-500/40 hover:shadow-xl transition-all duration-150 cursor-pointer flex flex-col gap-4"
+                                className="group relative rounded-xl sm:rounded-2xl border border-sky-500/20 bg-gradient-to-br from-slate-950 via-[#07132e] to-slate-950 p-4 sm:p-6 hover:border-sky-500/40 hover:shadow-xl transition-all duration-150 cursor-pointer flex flex-col gap-3.5 sm:gap-4"
                             >
                                 <div className="flex items-center justify-between gap-4 flex-wrap">
                                     <div className="flex items-center gap-3 flex-wrap">
