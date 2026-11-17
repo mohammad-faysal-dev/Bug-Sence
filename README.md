@@ -1,120 +1,159 @@
-# ⚡ BugSense AI — Intelligent Code Debugging Suite
+<div align="center">
 
-[![Next.js](https://img.shields.io/badge/Next.js-16.4.5-black?style=flat-square&logo=next.js)](https://nextjs.org/)
-[![React](https://img.shields.io/badge/React-19.3.0-blue?style=flat-square&logo=react)](https://react.dev/)
-[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-v4.0-38bdf8?style=flat-square&logo=tailwindcss)](https://tailwindcss.com/)
-[![Groq AI](https://img.shields.io/badge/AI_Engine-Groq_LPU-f55036?style=flat-square)](https://groq.com/)
-[![Live Demo](https://img.shields.io/badge/Live_Demo-Vercel-success?style=flat-square&logo=vercel)](https://bugsence.vercel.app)
-[![Scalar Docs](https://img.shields.io/badge/API_Docs-Scalar-0ea5e9?style=flat-square)](https://bugsence.vercel.app/reference)
-[![TypeScript](https://img.shields.io/badge/TypeScript-5.x-3178c6?style=flat-square&logo=typescript)](https://www.typescriptlang.org/)
+# ⚡ BugSense AI
 
-**BugSense AI** is a next-generation developer workbench designed to decode cryptic stack traces, isolate root causes, and generate production-ready code fixes in seconds. Powered by high-speed Groq AI inference and styled entirely with pure Tailwind CSS v4.
+### Intelligent Automated Code Diagnostics & Patch Synthesis Suite
+
+An enterprise-grade developer workbench designed to decode cryptic stack traces, isolate root causes, and generate production-ready code fixes in sub-second inference cycles.
+
+[![Next.js](https://img.shields.io/badge/Next.js-16.4.5-black?style=for-the-badge&logo=next.js)](https://nextjs.org/)
+[![React](https://img.shields.io/badge/React-19.3.0-20232a?style=for-the-badge&logo=react&logoColor=61dafb)](https://react.dev/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.x-3178c6?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-v4.0-38bdf8?style=for-the-badge&logo=tailwindcss&logoColor=white)](https://tailwindcss.com/)
+[![Groq AI](https://img.shields.io/badge/AI_Engine-Groq_LPU-f55036?style=for-the-badge)](https://groq.com/)
+[![Scalar](https://img.shields.io/badge/API_Docs-Scalar_3.1-0ea5e9?style=for-the-badge)](https://bugsence.vercel.app/reference)
+[![Vercel](https://img.shields.io/badge/Deploy-Vercel-black?style=for-the-badge&logo=vercel)](https://bugsence.vercel.app)
+[![License: MIT](https://img.shields.io/badge/License-MIT-emerald?style=for-the-badge)](LICENSE)
+
+<br />
+
+[Explore Live Demo](https://bugsence.vercel.app) · [Interactive API Reference](https://bugsence.vercel.app/reference) · [Report Bug](https://github.com/your-username/bugsence/issues) · [Request Feature](https://github.com/your-username/bugsence/issues)
+
+</div>
 
 ---
 
-### 🌐 Live Links
+## 📌 Table of Contents
 
-| Resource | Live Link | Description |
-| :--- | :--- | :--- |
-| 🚀 **Frontend (Live Demo)** | [https://bugsence.vercel.app](https://bugsence.vercel.app) | Live production application |
-| 📖 **Backend (API Reference)** | [https://bugsence.vercel.app/reference](https://bugsence.vercel.app/reference) | Interactive Scalar API docs & live client |
+- [Overview](#-overview)
+- [Live Deployments](#-live-deployments)
+- [Key Features](#-key-features)
+- [System Architecture](#-system-architecture)
+- [Tech Stack](#-tech-stack)
+- [Interactive API Documentation (Scalar)](#-interactive-api-documentation-scalar)
+- [Project Structure](#-project-structure)
+- [Getting Started](#-getting-started)
+  - [Prerequisites](#1-prerequisites)
+  - [Installation](#2-installation)
+  - [Environment Configuration](#3-environment-configuration)
+  - [Development Server](#4-run-development-server)
+  - [Production Build](#5-production-build)
+- [API Specification & Examples](#-api-specification--examples)
+- [Supported Languages & Presets](#-supported-languages--presets)
+- [Roadmap](#-roadmap)
+- [Contributing](#-contributing)
+- [License](#-license)
+
+---
+
+## 🔍 Overview
+
+Debugging production exceptions, cryptic compiler outputs, and convoluted runtime stack traces often drains hours of engineering productivity. **BugSense AI** bridges the gap between raw machine errors and actionable code patches.
+
+By pairing modern **Next.js 16 (Turbopack)** and **React 19** with **Groq's ultra-low-latency LPU inference**, BugSense provides near-instantaneous contextual debugging:
+- Parses raw exceptions and optional surrounding code context.
+- Classifies issue impact across standardized severity tiers (`low`, `medium`, `high`, `critical`).
+- Isolates definitive architectural root causes.
+- Synthesizes verified, defensive, drop-in code patches with inline explanations.
+- Stores historical audit trails locally with instant search and filtering.
+- Provides interactive, OpenAPI 3.1-compliant API documentation powered by **Scalar**.
+
+---
+
+## 🌐 Live Deployments
+
+| Resource | Target | Live URL | Status |
+| :--- | :--- | :--- | :--- |
+| **Production Application** | Primary Web App & Studio | [https://bugsence.vercel.app](https://bugsence.vercel.app) | ![Status](https://img.shields.io/badge/Status-Active-brightgreen?style=flat-square) |
+| **Scalar API Explorer** | Interactive Docs & Test Client | [https://bugsence.vercel.app/reference](https://bugsence.vercel.app/reference) | ![Status](https://img.shields.io/badge/Status-Active-brightgreen?style=flat-square) |
 
 ---
 
 ## 🌟 Key Features
 
-- **⚡ Real-Time AI Diagnostics:** High-speed, real-time code analysis powered by Groq's ultra-low-latency LPU engine.
-- **🎯 Dual-Pane Diagnostic Workbench:** Dual-input studio for raw error logs and optional surrounding source code context across 13+ languages (JavaScript, TypeScript, Python, Go, Rust, Java, C++, and more).
-- **🛡️ Root Cause & Severity Isolation:** Instant triage classifying errors into `low`, `medium`, `high`, or `critical` with deep architectural explanations.
-- **📋 1-Click Production Code Patches:** Synthesizes verified, copy-pasteable code fixes with defensive checks and explanatory comments.
-- **💾 Persistent Diagnostic Archive:** Save, search, filter, and review debugging history stored locally in your browser.
-- **📖 Interactive Scalar API Reference:** Full OpenAPI 3.1 interactive documentation and built-in API testing client at `/reference` (Swagger UI / Postman alternative).
-- **🎨 100% Pure Tailwind CSS v4:** Crafted with modern dark-mode developer aesthetics, glowing telemetry badges, and full responsive design for desktop, tablet, and mobile.
+### ⚡ Ultra-Low-Latency AI Diagnostics
+Powered by Groq's high-throughput LPU inference cluster, reducing diagnostic turnaround from minutes of manual triage to sub-second automated analysis.
+
+### 🎯 Dual-Pane Diagnostic Workbench
+Structured dual-input studio supporting raw stack traces, terminal dumps, and optional surrounding source code context across 13+ modern programming languages.
+
+### 🛡️ Automated Root Cause & Severity Triage
+Provides immediate risk classification (`low` | `medium` | `high` | `critical`) alongside deep technical breakdowns explaining *why* the bug manifested.
+
+### 📋 One-Click Production-Ready Code Patches
+Synthesizes clean, defensible code fixes with defensive validation, safety checks, and clear inline comments ready to copy and paste.
+
+### 💾 Local Diagnostic Archive & Audit Vault
+Persists all past diagnostics in browser storage with instant text search, language filtering, chronological sorting, and full historical inspection.
+
+### 📖 Built-in OpenAPI 3.1 Reference (Scalar)
+Self-hosted, beautifully styled interactive API documentation and in-browser testing console at `/reference` — eliminating the need for external tools like Postman.
+
+### 🎨 Pure Tailwind CSS v4 Aesthetic
+Crafted with modern developer dark aesthetics, telemetry glow badges, responsive grid layouts, and zero bloat.
 
 ---
 
-## 🚀 Quick Start Guide
-
-### 1. Prerequisites
-- **Node.js**: v18.18 or higher (v20+ recommended)
-- **npm** or **yarn** / **pnpm**
-
-### 2. Installation
-Clone the repository and install the dependencies:
-
-```bash
-git clone https://github.com/your-username/bugsence.git
-cd bugsence
-npm install
-```
-
-### 3. Environment Setup
-Create a `.env.local` file in the root directory (or use `.env.example` as a template):
-
-```env
-GROQ_API_KEY=your_groq_api_key_here
-```
-
-> **Note:** BugSense comes pre-configured with Groq API support so real AI diagnostics work immediately. Get your free API key at [console.groq.com](https://console.groq.com/keys).
-
-### 4. Run the Development Server
-```bash
-npm run dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) in your browser to launch BugSense.
-
----
-
-## 💡 How to Use BugSense
+## 🏗️ System Architecture
 
 ```mermaid
-flowchart LR
-    A[Paste Error or Select Preset] --> B[BugSense Diagnostic Studio]
-    B --> C[Groq AI Diagnostic Engine]
-    C --> D[Root Cause + Severity + Code Fix]
-    D --> E[Save to History Archive]
+flowchart TD
+    subgraph Client ["Client Browser (Next.js 16 + React 19)"]
+        UI["Diagnostic Studio / History / Dashboard"]
+        Presets["Quick Sample Bug Presets"]
+        Storage[("Browser LocalStorage Vault")]
+    end
+
+    subgraph API ["Next.js App Router (Backend Route Handlers)"]
+        AnalyzeEndpoint["/api/analyze (POST)"]
+        ScalarEndpoint["/reference (Scalar UI)"]
+        OpenAPISpec["/openapi.json (OpenAPI 3.1)"]
+    end
+
+    subgraph Engine ["AI Inference Layer"]
+        GroqAPI["Groq LPU Engine (Chat Completions)"]
+        ModelPrimary["openai/gpt-oss-120b"]
+        ModelFallback["openai/gpt-oss-20b"]
+    end
+
+    UI -->|"Submit Error + Snippet + Language"| AnalyzeEndpoint
+    Presets -->|"Autofill Sample Scenarios"| UI
+    AnalyzeEndpoint -->|"JSON Structured Prompt"| GroqAPI
+    GroqAPI --> ModelPrimary
+    ModelPrimary -.->|"Fallback if Degraded"| ModelFallback
+    GroqAPI -->|"Validated JSON Diagnostic Payload"| AnalyzeEndpoint
+    AnalyzeEndpoint -->|"Analysis Result"| UI
+    UI -->|"Persist Analysis Record"| Storage
+    ScalarEndpoint -->|"Reads Specs"| OpenAPISpec
 ```
-
-1. **Dashboard (`/`):** View diagnostic statistics, supported language counts, and quick-start links.
-2. **Select or Paste a Bug (`/analyzer`):**
-   - Click any quick sample preset (`JS TypeError`, `Python KeyError`, `React Hook Error`, `Go Nil Pointer`) to autofill realistic error scenarios.
-   - Or paste your own terminal output, stack trace, or compiler error with optional code context.
-3. **Analyze:** Click **"Analyze Bug"** to initiate instant AI inspection.
-4. **Inspect Resolution:** Review the structured breakdown:
-   - **Error Summary & Severity:** Immediate triage badge.
-   - **Root Cause & Technical Explanation:** Clear explanation of *why* the bug occurred.
-   - **Corrected Code Solution:** One-click copy the verified patch.
-5. **Save to History (`/history`):** Click **"Save to History"** to keep an audit trail of resolved issues that can be filtered and reviewed anytime.
-6. **API Reference & Testing (`/reference`):** Explore the complete interactive OpenAPI 3.1 documentation and test the AI diagnosis API directly in your browser.
-
----
-
-## 📖 API Documentation & Testing (Scalar)
-
-BugSense AI comes with built-in interactive API documentation powered by **Scalar**.
-
-- 🌐 **Live Production Docs:** [https://bugsence.vercel.app/reference](https://bugsence.vercel.app/reference)
-- 💻 **Local Development Docs:** [http://localhost:3000/reference](http://localhost:3000/reference)
-- 📄 **OpenAPI Specification:** [`public/openapi.json`](public/openapi.json)
-- ⚡ **Features:**
-  - Complete request payload and response schema definitions for `/api/analyze`
-  - In-browser **"Test Request"** client (Postman alternative)
-  - Instant copy-paste code snippets in JavaScript (Fetch/Axios), cURL, Python, Go, and more
 
 ---
 
 ## 🛠️ Tech Stack
 
-| Layer | Technology | Purpose |
-| :--- | :--- | :--- |
-| **Framework** | Next.js 16 (App Router + Turbopack) | Modern server-side rendering & optimized routing |
-| **UI Library** | React 19 | High-performance interactive components |
-| **Styling** | Pure Tailwind CSS v4 | Responsive utility-first design without custom raw CSS |
-| **API Docs** | Scalar (@scalar/nextjs-api-reference) | Modern OpenAPI 3.1 interactive reference & API client |
-| **Icons** | Lucide React | Clean, modern developer iconography |
-| **AI Engine** | Groq LPU Inference API | Sub-second structured JSON code analysis |
-| **Language** | TypeScript 5 | Strict end-to-end type safety |
+| Domain | Technology | Version | Purpose |
+| :--- | :--- | :--- | :--- |
+| **Framework** | [Next.js](https://nextjs.org/) | `16.4.5` | App Router, Turbopack, SSR, optimized edge routing |
+| **UI Library** | [React](https://react.dev/) | `19.3.0` | React Server Components & client hooks |
+| **Language** | [TypeScript](https://www.typescriptlang.org/) | `5.x` | Strict type validation across API contracts & UI state |
+| **Styling** | [Tailwind CSS](https://tailwindcss.com/) | `v4.3.5` | High-performance, modern utility CSS styling |
+| **AI Engine** | [Groq LPU](https://groq.com/) | API v1 | Ultra-fast LLM inference (`gpt-oss-120b` / `gpt-oss-20b`) |
+| **API Docs** | [Scalar](https://scalar.com/) | `0.12.16` | OpenAPI 3.1 visual reference & embedded request runner |
+| **Icons** | [Lucide React](https://lucide.dev/) | `1.70.0` | Consistent developer iconography |
+| **Deployment** | [Vercel](https://vercel.com/) | Global Edge | Continuous deployment, CDN caching, edge routing |
+
+---
+
+## 📖 Interactive API Documentation (Scalar)
+
+BugSense features first-class API documentation powered by `@scalar/nextjs-api-reference`:
+
+- **Endpoint**: [`/reference`](https://bugsence.vercel.app/reference)
+- **Specification**: [`public/openapi.json`](public/openapi.json)
+- **Features**:
+  - Live in-browser request sandbox (**"Test Request"** button).
+  - Code snippet generation in cURL, JavaScript (Fetch / Axios), Python, Go, Node.js, and PHP.
+  - Complete request/response schemas with field validation and severity constraints.
 
 ---
 
@@ -123,42 +162,218 @@ BugSense AI comes with built-in interactive API documentation powered by **Scala
 ```text
 bugsence/
 ├── app/
-│   ├── analyzer/page.tsx    # Interactive Bug Analyzer Studio
-│   ├── history/page.tsx     # Saved Diagnostic History & Search
-│   ├── reference/route.ts   # Scalar Interactive API Documentation & Client
-│   ├── api/analyze/route.ts # Groq AI Diagnostic API Route
-│   ├── layout.tsx           # Root Layout with Font & Meta config
-│   ├── page.tsx             # Main Telemetry Dashboard
-│   └── globals.css          # Tailwind CSS v4 entry point
+│   ├── analyzer/
+│   │   └── page.tsx              # Diagnostic Studio page (form + results)
+│   ├── api/
+│   │   └── analyze/
+│   │       └── route.ts          # Groq AI route handler with fallback models
+│   ├── history/
+│   │   └── page.tsx              # Diagnostic history vault and filter view
+│   ├── reference/
+│   │   └── route.ts              # Scalar OpenAPI 3.1 interactive explorer
+│   ├── favicon.ico               # Application favicon
+│   ├── globals.css               # Tailwind CSS v4 styling entry point
+│   ├── layout.tsx                # App root layout with theme & metadata
+│   └── page.tsx                  # Telemetry dashboard & overview landing
 ├── components/
 │   ├── features/
-│   │   ├── analyzer/        # Form workbench, result cards, presets
-│   │   └── history/         # History filters, cards, empty states
-│   ├── layout/              # AppShell, Sidebar, TopNav
-│   └── ui/                  # Pure Tailwind buttons, cards, badges
-├── hooks/                   # Custom hooks (useAnalyze, useHistory)
-├── lib/                     # Types, nav items, demo presets, utilities
+│   │   ├── analyzer/
+│   │   │   ├── AnalysisResult.tsx # Structured result card, patch viewer & copy
+│   │   │   └── AnalyzerForm.tsx   # Language selector, error input, code context
+│   │   └── history/
+│   │       ├── HistoryDetail.tsx  # Detailed historical inspection modal
+│   │       └── HistoryList.tsx    # Filterable list of previous analyses
+│   ├── layout/
+│   │   ├── AppShell.tsx          # Top-level application container
+│   │   ├── Sidebar.tsx           # Navigational sidebar with active states
+│   │   └── TopNav.tsx            # Top header bar with quick links & metrics
+│   └── ui/                       # Reusable UI primitives
+│       ├── badge.tsx             # Severity & language badges
+│       ├── button.tsx            # Action triggers & variant buttons
+│       ├── card.tsx              # Container cards with border styling
+│       ├── input.tsx             # Form text inputs
+│       ├── separator.tsx         # Dividers & structural rules
+│       └── textarea.tsx          # Multi-line code & log inputs
+├── hooks/
+│   ├── useAnalyze.ts             # Hook managing diagnostic state & API dispatch
+│   └── useHistory.ts             # Hook managing localStorage archive persistence
+├── lib/
+│   ├── demo-data.ts              # Preset error samples across languages
+│   ├── nav-items.tsx             # Route definitions & navigational metadata
+│   ├── storage.ts                # Browser storage helper utilities
+│   ├── types.ts                  # Shared TypeScript domain contracts
+│   └── utils.ts                  # ClassName merging and formatting utilities
 ├── public/
-│   ├── openapi.json         # OpenAPI 3.1 specification for BugSense AI APIs
-│   └── ...                  # Static assets & icons
-└── README.md
+│   ├── openapi.json              # OpenAPI 3.1 specification for BugSense
+│   └── ...                       # Static SVGs and branding assets
+├── .env.example                  # Environment configuration template
+├── eslint.config.mjs             # ESLint 9 configuration
+├── next.config.ts                # Next.js configuration
+├── package.json                  # Dependencies and build scripts
+├── postcss.config.mjs            # PostCSS configuration
+├── tsconfig.json                 # TypeScript compiler configuration
+└── README.md                     # Project documentation
 ```
 
 ---
 
-## 🧪 Build & Lint Verification
+## 🚀 Getting Started
 
-Verify that all type checks, linters, and static builds succeed with zero warnings or errors:
+Follow these steps to run BugSense locally on your development machine.
+
+### 1. Prerequisites
+- **Node.js**: `v18.18+` (v20+ LTS recommended)
+- **Package Manager**: `npm`, `pnpm`, or `yarn`
+- **Groq API Key**: A free key from [console.groq.com](https://console.groq.com/keys)
+
+### 2. Installation
+Clone the repository and install project dependencies:
 
 ```bash
-# Run ESLint
+git clone https://github.com/your-username/bugsence.git
+cd bugsence
+npm install
+```
+
+### 3. Environment Configuration
+Create a `.env.local` file by copying the provided example:
+
+```bash
+cp .env.example .env.local
+```
+
+Open `.env.local` and add your Groq API key:
+
+```env
+# Groq API Key (Required)
+GROQ_API_KEY=gsk_your_actual_groq_api_key_here
+```
+
+### 4. Run Development Server
+Start the local Next.js development server with Turbopack:
+
+```bash
+npm run dev
+```
+
+Open your browser and navigate to:
+- **Application Dashboard:** [http://localhost:3000](http://localhost:3000)
+- **Bug Analyzer Studio:** [http://localhost:3000/analyzer](http://localhost:3000/analyzer)
+- **Scalar API Reference:** [http://localhost:3000/reference](http://localhost:3000/reference)
+
+### 5. Production Build
+Verify types, linting, and compile the optimized production bundle:
+
+```bash
+# Run linting check
 npm run lint
 
-# Create production build
+# Compile production build
 npm run build
+
+# Start production server
+npm run start
 ```
+
+---
+
+## 📡 API Specification & Examples
+
+### Endpoint: `POST /api/analyze`
+
+Submits an error log and optional source code snippet to the BugSense AI diagnostic engine.
+
+#### Request Headers
+```http
+Content-Type: application/json
+```
+
+#### Request Payload
+```json
+{
+  "errorMessage": "TypeError: Cannot read properties of undefined (reading 'map')",
+  "codeSnippet": "const renderList = (items) => {\n  return items.map(item => item.id);\n};",
+  "language": "javascript"
+}
+```
+
+#### Response Payload (`200 OK`)
+```json
+{
+  "errorSummary": "Attempted to invoke .map() on an undefined or uninitialized array.",
+  "possibleCause": "The 'items' parameter was passed as undefined or not supplied by the caller.",
+  "explanation": "In JavaScript, calling array methods on non-array values causes a runtime TypeError. When an asynchronous query or missing prop provides undefined, the function halts execution.",
+  "suggestedSolution": "1. Provide a default array parameter.\n2. Add optional chaining or array type verification before iterating.",
+  "codeExample": "const renderList = (items = []) => {\n  // Guard against non-array or undefined inputs\n  if (!Array.isArray(items)) return [];\n  return items.map(item => item?.id);\n};",
+  "severity": "high"
+}
+```
+
+#### Error Response (`400 Bad Request`)
+```json
+{
+  "error": "Please enter an error message or stack trace to diagnose."
+}
+```
+
+---
+
+## 🌐 Supported Languages & Presets
+
+BugSense supports diagnostics across all primary runtime ecosystems:
+
+| Language | Identifier | Sample Preset Included |
+| :--- | :--- | :--- |
+| **JavaScript** | `javascript` | `TypeError: Cannot read properties of undefined` |
+| **TypeScript** | `typescript` | `TS2322: Type 'string' is not assignable to type 'number'` |
+| **Python** | `python` | `KeyError: 'user_id' in dictionary access` |
+| **Go** | `go` | `panic: runtime error: invalid memory address or nil pointer dereference` |
+| **Rust** | `rust` | `cannot borrow '*self' as mutable more than once at a time` |
+| **Java** | `java` | `java.lang.NullPointerException` |
+| **C++** | `cpp` | `Segmentation fault (core dumped)` |
+| **C#** | `csharp` | `System.NullReferenceException: Object reference not set` |
+| **PHP** | `php` | `Fatal error: Uncaught Error: Call to undefined function` |
+| **Ruby** | `ruby` | `NoMethodError: undefined method 'name' for nil:NilClass` |
+| **Swift** | `swift` | `Fatal error: Unexpectedly found nil while unwrapping an Optional value` |
+| **Kotlin** | `kotlin` | `KotlinNullPointerException` |
+| **Other** | `other` | Custom stack traces & general compiler logs |
+
+---
+
+## 🗺️ Roadmap
+
+- [x] Next.js 16 App Router & React 19 architecture
+- [x] High-speed Groq LPU engine integration with automatic model fallback
+- [x] Dual-pane analyzer studio with instant error presets
+- [x] Local diagnostic history archive with filtering and keyword search
+- [x] Native Scalar OpenAPI 3.1 documentation and testing console
+- [x] Tailwind CSS v4 design system
+- [ ] Automated GitHub Action to run BugSense triage on repository issues
+- [ ] Export diagnostic reports as Markdown and PDF summaries
+- [ ] VS Code Extension for direct in-editor diagnosis
+
+---
+
+## 🤝 Contributing
+
+Contributions make the open-source community an incredible place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
+
+1. **Fork the Project**
+2. **Create your Feature Branch** (`git checkout -b feature/AmazingFeature`)
+3. **Commit your Changes** (`git commit -m 'Add some AmazingFeature'`)
+4. **Push to the Branch** (`git push origin feature/AmazingFeature`)
+5. **Open a Pull Request**
+
+Please ensure that `npm run lint` and `npm run build` pass before submitting your PR.
 
 ---
 
 ## 📄 License
-This project is open-source and available under the [MIT License](LICENSE).
+
+Distributed under the **MIT License**. See `LICENSE` for more information.
+
+---
+
+<div align="center">
+  <sub>Built with ❤️ using Next.js 16, React 19, Tailwind CSS v4, and Groq LPU.</sub>
+</div>
