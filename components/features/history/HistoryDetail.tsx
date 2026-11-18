@@ -17,9 +17,15 @@ import {
     Clock,
     Hash,
     Cpu,
+    Download,
+    Share2,
+    Printer,
 } from "lucide-react";
 import { AnalysisRecord } from "@/lib/types";
 import { SEVERITY_CONFIG, LANGUAGE_LABELS, formatDate } from "@/lib/utils";
+import { CodeDiffViewer } from "@/components/features/analyzer/CodeDiffViewer";
+import { UnitTestGenerator } from "@/components/features/analyzer/UnitTestGenerator";
+import { downloadMarkdownFile, generateGitHubIssueTemplate } from "@/lib/export-utils";
 
 interface HistoryDetailProps {
     record: AnalysisRecord;
@@ -34,6 +40,7 @@ export function HistoryDetail({ record, onBack, onDelete }: HistoryDetailProps) 
     const [copiedReport, setCopiedReport] = useState(false);
     const [copiedError, setCopiedError] = useState(false);
     const [copiedFix, setCopiedFix] = useState(false);
+    const [copiedGithub, setCopiedGithub] = useState(false);
     const [confirmDelete, setConfirmDelete] = useState(false);
 
     const copyToClipboard = (text: string, setter: (val: boolean) => void) => {
@@ -41,6 +48,19 @@ export function HistoryDetail({ record, onBack, onDelete }: HistoryDetailProps) 
             setter(true);
             setTimeout(() => setter(false), 2000);
         }).catch(() => {});
+    };
+
+    const handleCopyGithubIssue = () => {
+        const ghIssue = generateGitHubIssueTemplate(result, request);
+        copyToClipboard(ghIssue, setCopiedGithub);
+    };
+
+    const handleDownloadMarkdown = () => {
+        downloadMarkdownFile(result, request, createdAt);
+    };
+
+    const handlePrint = () => {
+        window.print();
     };
 
     const handleCopyReport = () => {
@@ -129,6 +149,37 @@ ${result.codeExample ? `[Production Code Patch]\n${result.codeExample}` : ""}
                         <span>Re-Analyze in Studio</span>
                     </Link>
 
+                    {/* Export Markdown */}
+                    <button
+                        type="button"
+                        onClick={handleDownloadMarkdown}
+                        className="inline-flex items-center gap-1.5 px-3 py-1.5 sm:px-3.5 sm:py-2 rounded-xl text-xs font-semibold text-slate-200 bg-slate-900/80 hover:bg-slate-800 border border-slate-700/80 transition-all duration-150 cursor-pointer shadow-sm"
+                        title="Download Markdown Report"
+                    >
+                        <Download className="h-3.5 w-3.5 text-sky-400" />
+                        <span>Export .md</span>
+                    </button>
+
+                    {/* Copy GitHub Issue */}
+                    <button
+                        type="button"
+                        onClick={handleCopyGithubIssue}
+                        className="inline-flex items-center gap-1.5 px-3 py-1.5 sm:px-3.5 sm:py-2 rounded-xl text-xs font-semibold text-slate-200 bg-slate-900/80 hover:bg-slate-800 border border-slate-700/80 transition-all duration-150 cursor-pointer shadow-sm"
+                        title="Copy as GitHub Issue"
+                    >
+                        {copiedGithub ? (
+                            <>
+                                <Check className="h-3.5 w-3.5 text-emerald-400" />
+                                <span className="text-emerald-400">Copied Issue!</span>
+                            </>
+                        ) : (
+                            <>
+                                <Share2 className="h-3.5 w-3.5 text-indigo-400" />
+                                <span>GitHub Issue</span>
+                            </>
+                        )}
+                    </button>
+
                     <button
                         type="button"
                         onClick={handleCopyReport}
@@ -145,6 +196,16 @@ ${result.codeExample ? `[Production Code Patch]\n${result.codeExample}` : ""}
                                 <span>Copy Report</span>
                             </>
                         )}
+                    </button>
+
+                    {/* Print */}
+                    <button
+                        type="button"
+                        onClick={handlePrint}
+                        className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 sm:px-3.5 sm:py-2 rounded-xl text-xs font-semibold text-slate-200 bg-slate-900/80 hover:bg-slate-800 border border-slate-700/80 transition-all duration-150 cursor-pointer shadow-sm"
+                        title="Print or Save as PDF"
+                    >
+                        <Printer className="h-3.5 w-3.5 text-slate-400" />
                     </button>
 
                     {!confirmDelete ? (

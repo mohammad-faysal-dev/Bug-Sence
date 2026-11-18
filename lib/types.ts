@@ -35,6 +35,21 @@ export interface AnalysisRecord {
   createdAt: string;
 }
 
+export interface TestGenerationRequest {
+  language: ProgrammingLanguage;
+  errorMessage: string;
+  codeSnippet?: string;
+  codeExample?: string;
+  framework?: string;
+}
+
+export interface TestGenerationResult {
+  framework: string;
+  fileName: string;
+  testCode: string;
+  instructions: string;
+}
+
 export interface ApiResponse<T> {
   data?: T;
   error?: string;
