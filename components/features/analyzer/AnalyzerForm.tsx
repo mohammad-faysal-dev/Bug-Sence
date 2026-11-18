@@ -15,6 +15,7 @@ import {
 import { AnalysisRequest, ProgrammingLanguage } from "@/lib/types";
 import { LANGUAGE_LABELS, cn } from "@/lib/utils";
 import { DEMO_SAMPLES } from "@/lib/demo-data";
+import { ErrorExplainerPanel } from "./ErrorExplainerPanel";
 
 const LANGUAGES = Object.entries(LANGUAGE_LABELS) as [ProgrammingLanguage, string][];
 
@@ -223,6 +224,7 @@ export function AnalyzerForm({ onSubmit, isLoading }: AnalyzerFormProps) {
                                 <span>{errors.errorMessage}</span>
                             </p>
                         )}
+                        <ErrorExplainerPanel errorText={errorMessage} />
                     </div>
                 </div>
 
@@ -254,7 +256,7 @@ export function AnalyzerForm({ onSubmit, isLoading }: AnalyzerFormProps) {
             </div>
 
             {/* ── GUIDANCE FOOTER ── */}
-            <div className="flex items-center gap-3 sm:gap-6 px-4 py-3 sm:px-6 sm:py-3.5 bg-slate-900/40 text-[11px] sm:text-xs text-slate-400 flex-wrap">
+            <div className="flex items-center gap-3 sm:gap-6 px-4 py-3 sm:px-6 sm:py-3.5 bg-slate-900/40 text-[11px] sm:text-xs text-slate-400 flex-wrap border-t border-slate-800/60">
                 <div className="flex items-center gap-2">
                     <span className="w-1.5 h-1.5 rounded-full bg-sky-400 block shrink-0" />
                     <span>Include complete stack trace with line numbers</span>
@@ -266,6 +268,13 @@ export function AnalyzerForm({ onSubmit, isLoading }: AnalyzerFormProps) {
                 <div className="flex items-center gap-2">
                     <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 block shrink-0" />
                     <span>Select programming language matching your runtime</span>
+                </div>
+                <div className="ml-auto flex items-center gap-1.5 text-[10px] text-slate-500 font-mono shrink-0">
+                    <kbd className="px-1.5 py-0.5 rounded bg-slate-800 border border-slate-700 text-slate-400">Ctrl+Enter</kbd>
+                    <span>to analyze</span>
+                    <span className="text-slate-700">·</span>
+                    <kbd className="px-1.5 py-0.5 rounded bg-slate-800 border border-slate-700 text-slate-400">Ctrl+K</kbd>
+                    <span>to clear</span>
                 </div>
             </div>
         </form>
