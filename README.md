@@ -11,13 +11,12 @@ An enterprise-grade developer workbench designed to decode cryptic stack traces,
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.x-3178c6?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-v4.0-38bdf8?style=for-the-badge&logo=tailwindcss&logoColor=white)](https://tailwindcss.com/)
 [![Groq AI](https://img.shields.io/badge/AI_Engine-Groq_LPU-f55036?style=for-the-badge)](https://groq.com/)
-[![Scalar](https://img.shields.io/badge/API_Docs-Scalar_3.1-0ea5e9?style=for-the-badge)](https://bugsence.vercel.app/reference)
 [![Vercel](https://img.shields.io/badge/Deploy-Vercel-black?style=for-the-badge&logo=vercel)](https://bugsence.vercel.app)
 [![License: MIT](https://img.shields.io/badge/License-MIT-emerald?style=for-the-badge)](LICENSE)
 
 <br />
 
-[Explore Live Demo](https://bugsence.vercel.app) · [Interactive API Reference](https://bugsence.vercel.app/reference) · [Report Bug](https://github.com/your-username/bugsence/issues) · [Request Feature](https://github.com/your-username/bugsence/issues)
+[Explore Live Demo](https://bugsence.vercel.app) · [Report Bug](https://github.com/your-username/bugsence/issues) · [Request Feature](https://github.com/your-username/bugsence/issues)
 
 </div>
 
@@ -30,7 +29,6 @@ An enterprise-grade developer workbench designed to decode cryptic stack traces,
 - [Key Features](#-key-features)
 - [System Architecture](#-system-architecture)
 - [Tech Stack](#-tech-stack)
-- [Interactive API Documentation (Scalar)](#-interactive-api-documentation-scalar)
 - [Project Structure](#-project-structure)
 - [Getting Started](#-getting-started)
   - [Prerequisites](#1-prerequisites)
@@ -56,7 +54,6 @@ By pairing modern **Next.js 16 (Turbopack)** and **React 19** with **Groq's ultr
 - Isolates definitive architectural root causes.
 - Synthesizes verified, defensive, drop-in code patches with inline explanations.
 - Stores historical audit trails locally with instant search and filtering.
-- Provides interactive, OpenAPI 3.1-compliant API documentation powered by **Scalar**.
 
 ---
 
@@ -65,7 +62,6 @@ By pairing modern **Next.js 16 (Turbopack)** and **React 19** with **Groq's ultr
 | Resource | Target | Live URL | Status |
 | :--- | :--- | :--- | :--- |
 | **Production Application** | Primary Web App & Studio | [https://bugsence.vercel.app](https://bugsence.vercel.app) | ![Status](https://img.shields.io/badge/Status-Active-brightgreen?style=flat-square) |
-| **Scalar API Explorer** | Interactive Docs & Test Client | [https://bugsence.vercel.app/reference](https://bugsence.vercel.app/reference) | ![Status](https://img.shields.io/badge/Status-Active-brightgreen?style=flat-square) |
 
 ---
 
@@ -86,9 +82,6 @@ Synthesizes clean, defensible code fixes with defensive validation, safety check
 ### 💾 Local Diagnostic Archive & Audit Vault
 Persists all past diagnostics in browser storage with instant text search, language filtering, chronological sorting, and full historical inspection.
 
-### 📖 Built-in OpenAPI 3.1 Reference (Scalar)
-Self-hosted, beautifully styled interactive API documentation and in-browser testing console at `/reference` — eliminating the need for external tools like Postman.
-
 ### 🎨 Pure Tailwind CSS v4 Aesthetic
 Crafted with modern developer dark aesthetics, telemetry glow badges, responsive grid layouts, and zero bloat.
 
@@ -106,8 +99,6 @@ flowchart TD
 
     subgraph API ["Next.js App Router (Backend Route Handlers)"]
         AnalyzeEndpoint["/api/analyze (POST)"]
-        ScalarEndpoint["/reference (Scalar UI)"]
-        OpenAPISpec["/openapi.json (OpenAPI 3.1)"]
     end
 
     subgraph Engine ["AI Inference Layer"]
@@ -124,7 +115,6 @@ flowchart TD
     GroqAPI -->|"Validated JSON Diagnostic Payload"| AnalyzeEndpoint
     AnalyzeEndpoint -->|"Analysis Result"| UI
     UI -->|"Persist Analysis Record"| Storage
-    ScalarEndpoint -->|"Reads Specs"| OpenAPISpec
 ```
 
 ---
@@ -138,22 +128,8 @@ flowchart TD
 | **Language** | [TypeScript](https://www.typescriptlang.org/) | `5.x` | Strict type validation across API contracts & UI state |
 | **Styling** | [Tailwind CSS](https://tailwindcss.com/) | `v4.3.5` | High-performance, modern utility CSS styling |
 | **AI Engine** | [Groq LPU](https://groq.com/) | API v1 | Ultra-fast LLM inference (`gpt-oss-120b` / `gpt-oss-20b`) |
-| **API Docs** | [Scalar](https://scalar.com/) | `0.12.16` | OpenAPI 3.1 visual reference & embedded request runner |
 | **Icons** | [Lucide React](https://lucide.dev/) | `1.70.0` | Consistent developer iconography |
 | **Deployment** | [Vercel](https://vercel.com/) | Global Edge | Continuous deployment, CDN caching, edge routing |
-
----
-
-## 📖 Interactive API Documentation (Scalar)
-
-BugSense features first-class API documentation powered by `@scalar/nextjs-api-reference`:
-
-- **Endpoint**: [`/reference`](https://bugsence.vercel.app/reference)
-- **Specification**: [`public/openapi.json`](public/openapi.json)
-- **Features**:
-  - Live in-browser request sandbox (**"Test Request"** button).
-  - Code snippet generation in cURL, JavaScript (Fetch / Axios), Python, Go, Node.js, and PHP.
-  - Complete request/response schemas with field validation and severity constraints.
 
 ---
 
@@ -169,8 +145,6 @@ bugsence/
 │   │       └── route.ts          # Groq AI route handler with fallback models
 │   ├── history/
 │   │   └── page.tsx              # Diagnostic history vault and filter view
-│   ├── reference/
-│   │   └── route.ts              # Scalar OpenAPI 3.1 interactive explorer
 │   ├── favicon.ico               # Application favicon
 │   ├── globals.css               # Tailwind CSS v4 styling entry point
 │   ├── layout.tsx                # App root layout with theme & metadata
@@ -259,7 +233,6 @@ npm run dev
 Open your browser and navigate to:
 - **Application Dashboard:** [http://localhost:3000](http://localhost:3000)
 - **Bug Analyzer Studio:** [http://localhost:3000/analyzer](http://localhost:3000/analyzer)
-- **Scalar API Reference:** [http://localhost:3000/reference](http://localhost:3000/reference)
 
 ### 5. Production Build
 Verify types, linting, and compile the optimized production bundle:
@@ -346,7 +319,6 @@ BugSense supports diagnostics across all primary runtime ecosystems:
 - [x] High-speed Groq LPU engine integration with automatic model fallback
 - [x] Dual-pane analyzer studio with instant error presets
 - [x] Local diagnostic history archive with filtering and keyword search
-- [x] Native Scalar OpenAPI 3.1 documentation and testing console
 - [x] Tailwind CSS v4 design system
 - [ ] Automated GitHub Action to run BugSense triage on repository issues
 - [ ] Export diagnostic reports as Markdown and PDF summaries
