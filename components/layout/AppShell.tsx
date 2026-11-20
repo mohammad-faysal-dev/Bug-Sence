@@ -3,19 +3,23 @@
 import { useState } from "react";
 import { Sidebar } from "./Sidebar";
 import { TopNav } from "./TopNav";
+import { NAV_ITEMS } from "@/lib/nav-items";
 
 interface NavItem {
     href: string;
     label: string;
     icon: React.ReactNode;
+    badge?: string;
 }
 
 interface AppShellProps {
     children: React.ReactNode;
     title: string;
     subtitle?: string;
-    navItems: NavItem[];
+    navItems?: NavItem[];
+    items?: NavItem[];
     topNavActions?: React.ReactNode;
+    actions?: React.ReactNode;
 }
 
 export function AppShell({
@@ -23,14 +27,18 @@ export function AppShell({
     title,
     subtitle,
     navItems,
+    items,
     topNavActions,
+    actions,
 }: AppShellProps) {
     const [sidebarOpen, setSidebarOpen] = useState(false);
+    const resolvedItems = navItems || items || NAV_ITEMS;
+    const resolvedActions = topNavActions || actions;
 
     return (
         <div className="min-h-screen bg-[#020817] text-slate-100 flex relative overflow-x-hidden">
             <Sidebar
-                items={navItems}
+                items={resolvedItems}
                 isOpen={sidebarOpen}
                 onClose={() => setSidebarOpen(false)}
             />
@@ -39,7 +47,7 @@ export function AppShell({
                     title={title}
                     subtitle={subtitle}
                     onMenuClick={() => setSidebarOpen((prev) => !prev)}
-                    actions={topNavActions}
+                    actions={resolvedActions}
                 />
                 <main className="flex-1 px-3 py-5 sm:px-6 sm:py-8 md:px-10 md:py-10 max-w-[1680px] w-full mx-auto">
                     {children}

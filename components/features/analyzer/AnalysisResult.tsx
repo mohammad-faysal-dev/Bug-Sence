@@ -20,6 +20,7 @@ import { BugAnalysis, AnalysisRequest } from "@/lib/types";
 import { SEVERITY_CONFIG, LANGUAGE_LABELS, formatDate } from "@/lib/utils";
 import { CodeDiffViewer } from "@/components/features/analyzer/CodeDiffViewer";
 import { UnitTestGenerator } from "@/components/features/analyzer/UnitTestGenerator";
+import { LiveFixRunner } from "@/components/features/analyzer/LiveFixRunner";
 import { downloadMarkdownFile, generateGitHubIssueTemplate } from "@/lib/export-utils";
 
 interface AnalysisResultProps {
@@ -287,8 +288,13 @@ ${result.codeExample ? `[Code Fix]\n${result.codeExample}` : ""}
 
         {/* ── INTERACTIVE CODE DIFF & REPAIRED CODE VIEWER ── */}
         {result.codeExample && result.codeExample.trim() ? (
-          <div className="md:col-span-2">
+          <div className="md:col-span-2 flex flex-col gap-4">
             <CodeDiffViewer
+              originalCode={request.codeSnippet}
+              fixedCode={result.codeExample}
+              language={request.language}
+            />
+            <LiveFixRunner
               originalCode={request.codeSnippet}
               fixedCode={result.codeExample}
               language={request.language}

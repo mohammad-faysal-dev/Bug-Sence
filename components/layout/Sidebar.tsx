@@ -10,15 +10,16 @@ interface NavItem {
     href: string;
     label: string;
     icon: React.ReactNode;
+    badge?: string;
 }
 
 interface SidebarProps {
-    items: NavItem[];
+    items?: NavItem[];
     isOpen?: boolean;
     onClose?: () => void;
 }
 
-export function Sidebar({ items, isOpen = false, onClose }: SidebarProps) {
+export function Sidebar({ items = [], isOpen = false, onClose }: SidebarProps) {
     const pathname = usePathname();
 
     return (
@@ -68,7 +69,7 @@ export function Sidebar({ items, isOpen = false, onClose }: SidebarProps) {
                     <div className="px-3 pb-2 text-[11px] font-bold uppercase tracking-widest text-slate-400">
                         Platform
                     </div>
-                    {items.map((item) => {
+                    {(items || []).map((item) => {
                         const isActive = pathname === item.href;
                         return (
                             <Link
@@ -86,6 +87,11 @@ export function Sidebar({ items, isOpen = false, onClose }: SidebarProps) {
                                     {item.icon}
                                 </span>
                                 <span className="truncate">{item.label}</span>
+                                {item.badge && !isActive && (
+                                    <span className="ml-auto text-[10px] uppercase font-bold px-1.5 py-0.5 rounded-md bg-sky-500/10 text-sky-400 border border-sky-500/20">
+                                        {item.badge}
+                                    </span>
+                                )}
                                 {isActive && (
                                     <span className="ml-auto w-1.5 h-1.5 rounded-full bg-sky-400 shadow-sm shadow-sky-400 shrink-0" />
                                 )}

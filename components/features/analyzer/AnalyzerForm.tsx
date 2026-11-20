@@ -41,6 +41,24 @@ export function AnalyzerForm({ onSubmit, isLoading }: AnalyzerFormProps) {
         /* eslint-disable react-hooks/set-state-in-effect */
         if (sampleParam) setErrorMessage(sampleParam);
         if (langParam && LANGUAGE_LABELS[langParam]) setLanguage(langParam);
+
+        if (typeof window !== "undefined") {
+            const prefillError = sessionStorage.getItem("bugsense_prefill_error");
+            const prefillLang = sessionStorage.getItem("bugsense_prefill_lang") as ProgrammingLanguage | null;
+            const prefillSnippet = sessionStorage.getItem("bugsense_prefill_snippet");
+            if (prefillError) {
+                setErrorMessage(prefillError);
+                sessionStorage.removeItem("bugsense_prefill_error");
+            }
+            if (prefillLang && LANGUAGE_LABELS[prefillLang]) {
+                setLanguage(prefillLang);
+                sessionStorage.removeItem("bugsense_prefill_lang");
+            }
+            if (prefillSnippet) {
+                setCodeSnippet(prefillSnippet);
+                sessionStorage.removeItem("bugsense_prefill_snippet");
+            }
+        }
         /* eslint-enable react-hooks/set-state-in-effect */
     }, [sampleParam, langParam]);
 

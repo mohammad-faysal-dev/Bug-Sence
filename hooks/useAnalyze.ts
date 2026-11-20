@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { AnalysisRequest, BugAnalysis, ApiResponse } from "@/lib/types";
+import { getSettings } from "@/lib/settings";
 
 interface UseAnalyzeReturn {
     analyze: (request: AnalysisRequest) => Promise<BugAnalysis | null>;
@@ -19,9 +20,24 @@ export function useAnalyze(): UseAnalyzeReturn {
         setError(null);
 
         try {
+            const settings = getSettings();
+            const headers: Record<string, string> = {
+                "Content-Type": "application/json",
+            };
+
+            if (settings.customApiKey?.trim()) {
+                headers["x-groq-api-key"] = settings.customApiKey.trim();
+            }
+            if (settings.selectedModel) {
+                headers["x-groq-model"] = settings.selectedModel;
+            }
+            if (settings.useOfflineEngine) {
+                headers["x-use-offline"] = "true";
+            }
+
             const response = await fetch("/api/analyze", {
                 method: "POST",
-                headers: { "Content-Type": "application/json" },
+                headers,
                 body: JSON.stringify(request),
             });
 
